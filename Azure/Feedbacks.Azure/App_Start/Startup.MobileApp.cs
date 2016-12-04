@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Feedbacks.Azure.DataObjects;
+using Feedbacks.Azure.Models;
+using Microsoft.Azure.Mobile.Server;
+using Microsoft.Azure.Mobile.Server.Authentication;
+using Microsoft.Azure.Mobile.Server.Config;
+using Owin;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Web.Http;
-using Microsoft.Azure.Mobile.Server;
-using Microsoft.Azure.Mobile.Server.Authentication;
-using Microsoft.Azure.Mobile.Server.Config;
-using Feedbacks.Azure.DataObjects;
-using Feedbacks.Azure.Models;
-using Owin;
 
 namespace Feedbacks.Azure
 {
@@ -48,15 +48,14 @@ namespace Feedbacks.Azure
     {
         protected override void Seed(MobileServiceContext context)
         {
-            List<TodoItem> todoItems = new List<TodoItem>
+            List<FeedbackItem> todoItems = new List<FeedbackItem>
             {
-                new TodoItem { Id = Guid.NewGuid().ToString(), Text = "First item", Complete = false },
-                new TodoItem { Id = Guid.NewGuid().ToString(), Text = "Second item", Complete = false }
+                new FeedbackItem { Id = Guid.NewGuid().ToString(), Text = "First item", CreationDate = DateTime.Now, PlaceId = Guid.NewGuid().ToString() }
             };
 
-            foreach (TodoItem todoItem in todoItems)
+            foreach (FeedbackItem todoItem in todoItems)
             {
-                context.Set<TodoItem>().Add(todoItem);
+                context.Set<FeedbackItem>().Add(todoItem);
             }
 
             base.Seed(context);

@@ -1,9 +1,8 @@
+using Feedbacks.Azure.DataObjects;
+using Microsoft.Azure.Mobile.Server.Tables;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
-using Microsoft.Azure.Mobile.Server;
-using Microsoft.Azure.Mobile.Server.Tables;
-using Feedbacks.Azure.DataObjects;
 
 namespace Feedbacks.Azure.Models
 {
@@ -27,7 +26,7 @@ namespace Feedbacks.Azure.Models
         {
         }
 
-        public DbSet<TodoItem> TodoItems { get; set; }
+        public DbSet<FeedbackItem> FeedbackItems { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
