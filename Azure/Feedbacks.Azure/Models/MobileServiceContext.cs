@@ -28,6 +28,8 @@ namespace Feedbacks.Azure.Models
 
         public DbSet<FeedbackItem> FeedbackItems { get; set; }
 
+        public DbSet<PlaceItem> PlaceItems { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Add(

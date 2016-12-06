@@ -5,7 +5,6 @@ using Microsoft.Azure.Mobile.Server.Authentication;
 using Microsoft.Azure.Mobile.Server.Config;
 using Owin;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Web.Http;
@@ -48,15 +47,24 @@ namespace Feedbacks.Azure
     {
         protected override void Seed(MobileServiceContext context)
         {
-            List<FeedbackItem> todoItems = new List<FeedbackItem>
-            {
-                new FeedbackItem { Id = Guid.NewGuid().ToString(), Text = "First item", CreationDate = DateTime.Now, PlaceId = Guid.NewGuid().ToString() }
-            };
+            var placeItem = new PlaceItem
+                            {
+                                Id = Guid.NewGuid().ToString(),
+                                BeaconUUID = new Guid("6BF6DBA4-6D12-4C42-AE68-5344159683E3"),
+                                BeaconMajor = 1,
+                                BeaconMinor = 8
+                            };
 
-            foreach (FeedbackItem todoItem in todoItems)
-            {
-                context.Set<FeedbackItem>().Add(todoItem);
-            }
+            var feedbackItem = new FeedbackItem
+                               {
+                                   Id = Guid.NewGuid().ToString(),
+                                   Text = "First item",
+                                   CreationDate = DateTime.Now,
+                                   PlaceId = placeItem.Id
+                               };
+
+            context.Set<FeedbackItem>().Add(feedbackItem);
+
 
             base.Seed(context);
         }

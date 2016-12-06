@@ -184,6 +184,10 @@
     <Compile Include="Controllers\FeedbackItemController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DataObjects\FeedbackItem.cs" />
+    <Compile Include="DataObjects\SqlDatabaseSetup.cs" />
+    <Compile Include="DataObjects\SqlServerUnitTest1.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Models\MobileServiceContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -204,6 +208,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataObjects\app.config" />
     <None Include="Properties\PublishProfiles\xamarin2016 - Web Deploy.pubxml" />
   </ItemGroup>
   <PropertyGroup>
@@ -235,4 +240,9 @@
     </VisualStudio>
   </ProjectExtensions>
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+  <Import Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(SQLDBExtensionsRefPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.Sql.UnitTesting.targets" Condition="'$(SQLDBExtensionsRefPath)' == ''" />
+  <PropertyGroup>
+    <SsdtUnitTestVersion>2.0</SsdtUnitTestVersion>
+  </PropertyGroup>
 </Project>
