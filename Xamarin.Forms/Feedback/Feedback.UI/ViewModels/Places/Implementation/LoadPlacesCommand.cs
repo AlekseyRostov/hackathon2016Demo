@@ -12,7 +12,7 @@ namespace Feedback.UI.ViewModels.Places.Implementation
         private readonly PlacesViewModel _viewModel;
         private readonly IPlaceService _placesService;
 
-        public LoadPlacesCommand(PlacesViewModel viewModel, IPlaceService placesService) : base(viewModel)
+        public LoadPlacesCommand(PlacesViewModel viewModel, IPlaceService placesService, IAuthenticationService authenticationService) : base(viewModel, authenticationService)
         {
             _placesService = placesService;
             _viewModel = viewModel;

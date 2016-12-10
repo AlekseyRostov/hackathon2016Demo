@@ -16,7 +16,8 @@ namespace Feedback.UI.ViewModels.Places.Implementation
         public IAsyncCommand GetLoadPlacesCommand(PlacesViewModel viewModel)
         {
             var placesService = _container.Resolve<IPlaceService>();
-            return new LoadPlacesCommand(viewModel, placesService);
+            var authenticationService = _container.Resolve<IAuthenticationService>();
+            return new LoadPlacesCommand(viewModel, placesService, authenticationService);
         }
     }
 }

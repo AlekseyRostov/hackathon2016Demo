@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Feedback.Core.Entities;
 using Feedback.Core.Services;
 using Feedback.UI.ViewModels.Base.Implementation;
 
@@ -35,6 +34,6 @@ namespace Feedback.UI.ViewModels.Authentication.Implementation
             }
         }
 
-        public abstract Task<User> LoginAsync();
+        public abstract Task LoginAsync();
     }
 }

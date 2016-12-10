@@ -12,7 +12,9 @@ namespace Feedback.UI.ViewModels.Feedbacks.Implementation
         private readonly IFeedbackService _feedbackService;
         private readonly FeedbacksViewModel _viewModel;
 
-        public LoadFeedbacksCommand(FeedbacksViewModel viewModel, IFeedbackService feedbackService) : base(viewModel)
+        public LoadFeedbacksCommand(FeedbacksViewModel viewModel,
+                                    IFeedbackService feedbackService,
+                                    IAuthenticationService authenticationService) : base(viewModel, authenticationService)
         {
             _viewModel = viewModel;
             _feedbackService = feedbackService;

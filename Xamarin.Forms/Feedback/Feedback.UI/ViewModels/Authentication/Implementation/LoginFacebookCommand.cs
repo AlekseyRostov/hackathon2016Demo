@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Feedback.Core.Entities;
 using Feedback.Core.Services;
 
 namespace Feedback.UI.ViewModels.Authentication.Implementation
@@ -11,10 +10,9 @@ namespace Feedback.UI.ViewModels.Authentication.Implementation
         {
         }
 
-        public override async Task<User> LoginAsync()
+        public override Task LoginAsync()
         {
-            var user = await AuthenticationService.LoginWithFacebookAsync();
-            return user;
+            return AuthenticationService.LoginWithFacebookAsync();
         }
     }
 }

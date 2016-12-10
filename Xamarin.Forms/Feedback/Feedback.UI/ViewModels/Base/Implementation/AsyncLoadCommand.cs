@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Net;
 using System.Threading.Tasks;
+using Feedback.Core.Services;
+using Microsoft.WindowsAzure.MobileServices;
 using Strings = Feedback.UI.Resources.Strings.Common.Common;
 
 namespace Feedback.UI.ViewModels.Base.Implementation
@@ -9,9 +11,11 @@ namespace Feedback.UI.ViewModels.Base.Implementation
     internal abstract class AsyncLoadCommand : AsyncCommand
     {
         private readonly ILoadableViewModel _viewModel;
+        private readonly IAuthenticationService _authenticationService;
 
-        protected AsyncLoadCommand(ILoadableViewModel viewModel)
+        protected AsyncLoadCommand(ILoadableViewModel viewModel, IAuthenticationService authenticationService)
         {
+            _authenticationService = authenticationService;
             _viewModel = viewModel;
             viewModel.IsLoaded = false;
             viewModel.IsEmpty = true;
@@ -43,6 +47,14 @@ namespace Feedback.UI.ViewModels.Base.Implementation
         public virtual bool HandleException(Exception ex)
         {
             Debug.WriteLine(ex);
+
+            var azureException = ex as MobileServiceInvalidOperationException;
+            if(azureException?.Response?.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                _authenticationService.LogoutAsync();
+                return true;
+            }
+
             if(ex is WebException)
             {
                 _viewModel.LoadFailureMessage = Strings.LoadDataNetworkFailure;
