@@ -1,10 +1,9 @@
-﻿using Feedbacks.Azure.DataObjects;
-using Feedbacks.Azure.Models;
+﻿using Feedbacks.Azure.Models;
 using Microsoft.Azure.Mobile.Server;
 using Microsoft.Azure.Mobile.Server.Authentication;
 using Microsoft.Azure.Mobile.Server.Config;
+using Microsoft.Azure.Mobile.Server.Tables.Config;
 using Owin;
-using System;
 using System.Configuration;
 using System.Data.Entity;
 using System.Web.Http;
@@ -16,9 +15,16 @@ namespace Feedbacks.Azure
         public static void ConfigureMobileApp(IAppBuilder app)
         {
             HttpConfiguration config = new HttpConfiguration();
+            SwaggerConfig.Register(config);
 
             new MobileAppConfiguration()
-                .UseDefaultConfiguration()
+                .AddMobileAppHomeController()
+                //.MapApiControllers()
+                .AddTables( // from the Tables package
+                            new MobileAppTableConfiguration()
+                                .MapTableControllers()
+                                .AddEntityFramework()             // from the Entity package
+                            )
                 .ApplyTo(config);
 
             // Use Entity Framework Code First to create database tables based on your DbContext
@@ -39,35 +45,13 @@ namespace Feedbacks.Azure
                 });
             }
 
+
             app.UseWebApi(config);
         }
     }
 
     public class MobileServiceInitializer : CreateDatabaseIfNotExists<MobileServiceContext>
     {
-        protected override void Seed(MobileServiceContext context)
-        {
-            var placeItem = new PlaceItem
-                            {
-                                Id = Guid.NewGuid().ToString(),
-                                BeaconUUID = new Guid("6BF6DBA4-6D12-4C42-AE68-5344159683E3"),
-                                BeaconMajor = 1,
-                                BeaconMinor = 8
-                            };
-
-            var feedbackItem = new FeedbackItem
-                               {
-                                   Id = Guid.NewGuid().ToString(),
-                                   Text = "First item",
-                                   CreationDate = DateTime.Now,
-                                   PlaceId = placeItem.Id
-                               };
-
-            context.Set<FeedbackItem>().Add(feedbackItem);
-
-
-            base.Seed(context);
-        }
     }
 }
 

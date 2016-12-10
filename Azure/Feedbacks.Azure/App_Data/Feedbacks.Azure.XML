@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Feedbacks.Azure</name>
+    </assembly>
+    <members>
+        <member name="T:Feedbacks.Azure.SwaggerConfig">
+            <summary>
+            Документация
+            </summary>
+        </member>
+        <member name="M:Feedbacks.Azure.SwaggerConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Регистрация сервиса
+            </summary>
+        </member>
+        <member name="T:Feedbacks.Azure.Controllers.FeedbackItemController">
+            <summary>
+            Работа с отзывами
+            </summary>
+        </member>
+        <member name="T:Feedbacks.Azure.Controllers.PlaceItemController">
+            <summary>
+            Метод получения места по идентификатору маяка
+            </summary>
+        </member>
+        <member name="M:Feedbacks.Azure.Controllers.PlaceItemController.Get(System.Guid,System.Int32,System.Int32)">
+            <summary>
+             GET api/placeitem
+            </summary>
+            <returns>PlaceItem</returns>
+        </member>
+        <member name="M:Feedbacks.Azure.Controllers.PlaceItemController.PostPlaceItem(Feedbacks.Azure.DataObjects.PlaceItem)">
+            <summary>
+             POST tables/PlaceItem
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Feedbacks.Azure.DataObjects.FeedbackItem">
+            <summary>
+            Модель отзыва
+            </summary>
+        </member>
+        <member name="P:Feedbacks.Azure.DataObjects.FeedbackItem.Text">
+            <summary>
+            Текст отзыва
+            </summary>
+        </member>
+        <member name="P:Feedbacks.Azure.DataObjects.FeedbackItem.CreationDate">
+            <summary>
+            Время создания
+            </summary>
+        </member>
+        <member name="P:Feedbacks.Azure.DataObjects.FeedbackItem.PlaceId">
+            <summary>
+            Идентификатор места
+            </summary>
+        </member>
+        <member name="T:Feedbacks.Azure.DataObjects.PlaceItem">
+            <summary>
+            Модель места
+            </summary>
+        </member>
+        <member name="P:Feedbacks.Azure.DataObjects.PlaceItem.Name">
+            <summary>
+            Название места
+            </summary>
+        </member>
+        <member name="P:Feedbacks.Azure.DataObjects.PlaceItem.BeaconUUID">
+            <summary>
+            Характеристика маяка UUID
+            </summary>
+        </member>
+        <member name="P:Feedbacks.Azure.DataObjects.PlaceItem.BeaconMajor">
+            <summary>
+            Характеристика маяка Major
+            </summary>
+        </member>
+        <member name="P:Feedbacks.Azure.DataObjects.PlaceItem.BeaconMinor">
+            <summary>
+            Характеристика маяка Minor
+            </summary>
+        </member>
+    </members>
+</doc>

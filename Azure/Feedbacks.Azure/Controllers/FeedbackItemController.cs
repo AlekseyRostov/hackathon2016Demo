@@ -9,6 +9,9 @@ using System.Web.Http.OData;
 
 namespace Feedbacks.Azure.Controllers
 {
+    /// <summary>
+    /// Работа с отзывами
+    /// </summary>
     public class FeedbackItemController : TableController<FeedbackItem>
     {
         protected override void Initialize(HttpControllerContext controllerContext)
