@@ -3,10 +3,11 @@ using Xamarin.Forms;
 
 namespace Feedback.UI.Core
 {
-    public class App : Application
+    public partial class App
     {
         public App()
         {
+            InitializeComponent();
             ServiceLocator.Initialize();
             MainPage = new NavigationPage(new PlacesPage());
         }

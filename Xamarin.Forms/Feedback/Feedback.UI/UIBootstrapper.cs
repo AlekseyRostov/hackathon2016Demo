@@ -1,4 +1,6 @@
 ﻿using Feedback.Core;
+using Feedback.UI.ViewModels.Feedbacks;
+using Feedback.UI.ViewModels.Feedbacks.Implementation;
 using Feedback.UI.ViewModels.Places;
 using Feedback.UI.ViewModels.Places.Implementation;
 using Microsoft.Practices.Unity;
@@ -11,6 +13,8 @@ namespace Feedback.UI
         {
             return unityContainer.RegisterType<PlacesFactory>()
                                  .RegisterType<IPlacesViewModel, PlacesViewModel>()
+                                 .RegisterType<FeedbacksFactory>()
+                                 .RegisterType<IFeedbacksViewModel, FeedbacksViewModel>()
                                  .RegisterCoreDependencies();
         }
     }

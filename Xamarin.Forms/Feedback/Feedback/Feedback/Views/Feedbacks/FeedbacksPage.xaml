@@ -2,22 +2,14 @@
 <ContentPage
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-  xmlns:converters="clr-namespace:Feedback.UI.Core.Converters;assembly=Feedback.UI.Core"
-  xmlns:strings="clr-namespace:Feedback.UI.Resources.Strings.Places;assembly=Feedback.UI"
-  x:Class="Feedback.UI.Core.Views.Places.PlacesPage"
+  xmlns:strings="clr-namespace:Feedback.UI.Resources.Strings.Feedbacks;assembly=Feedback.UI"
+  x:Class="Feedback.UI.Core.Views.Feedbacks.FeedbacksPage"
   Title="{x:Static strings:Common.Title}">
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <converters:ToStringConverter x:Key="ToStringConverter"/>
-    </ResourceDictionary>
-  </ContentPage.Resources>
   <Grid>
     <Grid
       IsVisible="{Binding IsLoaded}">
       <ListView
-        x:Name="PlacesListView"
-        ItemsSource="{Binding Places}"
-        ItemSelected="ListView_OnItemSelected"
+        ItemsSource="{Binding Feedbacks}"
         IsVisible="{Binding IsEmpty, Converter={StaticResource InverseVisibilityConverter}}"
         HasUnevenRows="True">
         <ListView.ItemTemplate>
@@ -26,7 +18,7 @@
               <ContentView
                 Padding="15,10,15,10">
                 <Label
-                  Text="{Binding BeaconUUID, Converter={StaticResource ToStringConverter}}"/>
+                  Text="{Binding Text}"/>
               </ContentView>
             </ViewCell>
           </DataTemplate>

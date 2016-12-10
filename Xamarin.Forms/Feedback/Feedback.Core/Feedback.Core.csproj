@@ -47,6 +47,7 @@
     <Compile Include="Services\Implementation\FeedbackService.cs" />
     <Compile Include="Services\Implementation\PlaceService.cs" />
     <Compile Include="Services\IPlaceService.cs" />
+    <Compile Include="Toolbox\CollectionToolbox.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

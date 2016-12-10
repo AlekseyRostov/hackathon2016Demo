@@ -21,7 +21,7 @@ namespace Feedback.UI.ViewModels.Places.Implementation
         protected override async Task ExecuteCoreAsync(object param)
         {
             var places = await _placesService.GetPlacesAsync();
-            _viewModel.Places = new ObservableCollection<Place>(places);
+            _viewModel.Places = places != null ? new ObservableCollection<Place>(places) : null;
             _viewModel.IsEmpty = _viewModel.Places?.Any() != true;
         }
     }

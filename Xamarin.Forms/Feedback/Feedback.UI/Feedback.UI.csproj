@@ -42,12 +42,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Strings\Feedbacks\Common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Strings\Places\Common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.resx</DependentUpon>
+    </Compile>
     <Compile Include="UIBootstrapper.cs" />
     <Compile Include="ViewModels\Base\ILoadableViewModel.cs" />
     <Compile Include="ViewModels\Base\Implementation\AsyncCommand.cs" />
     <Compile Include="ViewModels\Base\IAsyncCommand.cs" />
     <Compile Include="ViewModels\Base\Implementation\BaseLoadableViewModel.cs" />
     <Compile Include="ViewModels\Base\Implementation\AsyncLoadCommand.cs" />
+    <Compile Include="ViewModels\Feedbacks\IFeedbacksViewModel.cs" />
+    <Compile Include="ViewModels\Feedbacks\Implementation\FeedbacksFactory.cs" />
+    <Compile Include="ViewModels\Feedbacks\Implementation\FeedbacksViewModel.cs" />
+    <Compile Include="ViewModels\Feedbacks\Implementation\LoadFeedbacksCommand.cs" />
     <Compile Include="ViewModels\Places\Implementation\LoadPlacesCommand.cs" />
     <Compile Include="ViewModels\Places\Implementation\PlacesFactory.cs" />
     <Compile Include="ViewModels\Places\Implementation\PlacesViewModel.cs" />
@@ -55,6 +69,14 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Strings\Common\Common.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings\Feedbacks\Common.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Strings\Places\Common.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
     </EmbeddedResource>
