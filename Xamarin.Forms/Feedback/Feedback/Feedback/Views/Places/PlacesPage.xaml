@@ -11,6 +11,9 @@
       <converters:ToStringConverter x:Key="ToStringConverter"/>
     </ResourceDictionary>
   </ContentPage.Resources>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="{x:Static strings:Common.Logout}" Command="{Binding LogoutCommand}"/>
+  </ContentPage.ToolbarItems>
   <Grid>
     <Grid
       IsVisible="{Binding IsLoaded}">

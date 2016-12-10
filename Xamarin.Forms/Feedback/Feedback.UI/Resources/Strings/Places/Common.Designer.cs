@@ -62,6 +62,15 @@ namespace Feedback.UI.Resources.Strings.Places {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        internal static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There are no available places..
         /// </summary>
         internal static string Placeholder {

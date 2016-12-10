@@ -75,9 +75,12 @@ namespace Feedback.Core.Services.Implementation
         public async Task LogoutAsync()
         {
             await DeleteCurrentUser();
+            LogoutNative();
             await MobileService.LogoutAsync();
             CurrentUser = null;
         }
+
+        protected abstract void LogoutNative();
 
         private async Task DeleteCurrentUser()
         {
