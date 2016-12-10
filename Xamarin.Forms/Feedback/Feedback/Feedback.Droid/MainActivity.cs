@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace Feedback.Droid
 {
@@ -13,7 +14,7 @@ namespace Feedback.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-
+            CurrentPlatform.Init();
             Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App());
         }
