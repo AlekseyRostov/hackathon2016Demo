@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using TheRX.MVVM.VisualSupport;
 
 namespace Feedback.UI.ViewModels.Base.Implementation
@@ -11,6 +10,6 @@ namespace Feedback.UI.ViewModels.Base.Implementation
             await ExecuteAsync(parameter);
         }
 
-        public abstract Task ExecuteAsync(object parameter, CancellationToken token = default(CancellationToken));
+        public abstract Task ExecuteAsync(object parameter);
     }
 }

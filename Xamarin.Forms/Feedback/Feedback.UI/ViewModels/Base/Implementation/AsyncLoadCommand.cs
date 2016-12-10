@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Net;
-using System.Threading;
 using System.Threading.Tasks;
 using Strings = Feedback.UI.Resources.Strings.Common.Common;
 
 namespace Feedback.UI.ViewModels.Base.Implementation
 {
-    internal abstract class LoadableAsyncCommand : AsyncCommand
+    internal abstract class AsyncLoadCommand : AsyncCommand
     {
         private readonly ILoadableViewModel _viewModel;
 
-        protected LoadableAsyncCommand(ILoadableViewModel viewModel)
+        protected AsyncLoadCommand(ILoadableViewModel viewModel)
         {
             _viewModel = viewModel;
             viewModel.IsLoaded = false;
             viewModel.IsEmpty = true;
         }
 
-        public override async Task ExecuteAsync(object param, CancellationToken token = default(CancellationToken))
+        public override async Task ExecuteAsync(object param)
         {
             _viewModel.IsLoaded = false;
             _viewModel.IsLoading = true;
@@ -26,12 +25,12 @@ namespace Feedback.UI.ViewModels.Base.Implementation
 
             try
             {
-                await ExecuteCoreAsync(param, token);
+                await ExecuteCoreAsync(param);
                 _viewModel.IsLoaded = true;
             }
             catch(Exception ex)
             {
-                if(!HandleException(ex, token)) throw;
+                if(!HandleException(ex)) throw;
             }
             finally
             {
@@ -39,16 +38,10 @@ namespace Feedback.UI.ViewModels.Base.Implementation
             }
         }
 
-        protected abstract Task ExecuteCoreAsync(object param, CancellationToken token = default(CancellationToken));
+        protected abstract Task ExecuteCoreAsync(object param);
 
-        public virtual bool HandleException(Exception ex, CancellationToken token)
+        public virtual bool HandleException(Exception ex)
         {
-            //Ignore operation cancellations
-            if(ex is OperationCanceledException)
-            {
-                return true;
-            }
-
             Debug.WriteLine(ex);
             if(ex is WebException)
             {

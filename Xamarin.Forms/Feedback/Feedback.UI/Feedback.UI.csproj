@@ -42,11 +42,28 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
+    <Compile Include="UIBootstrapper.cs" />
     <Compile Include="ViewModels\Base\ILoadableViewModel.cs" />
     <Compile Include="ViewModels\Base\Implementation\AsyncCommand.cs" />
     <Compile Include="ViewModels\Base\IAsyncCommand.cs" />
     <Compile Include="ViewModels\Base\Implementation\BaseLoadableViewModel.cs" />
-    <Compile Include="ViewModels\Base\Implementation\LoadableAsyncCommand.cs" />
+    <Compile Include="ViewModels\Base\Implementation\AsyncLoadCommand.cs" />
+    <Compile Include="ViewModels\Places\Implementation\LoadPlacesCommand.cs" />
+    <Compile Include="ViewModels\Places\Implementation\PlacesFactory.cs" />
+    <Compile Include="ViewModels\Places\Implementation\PlacesViewModel.cs" />
+    <Compile Include="ViewModels\Places\IPlacesViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Strings\Common\Common.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Feedback.Core\Feedback.Core.csproj">
+      <Project>{CD775321-FB8D-44AE-AC3A-75F6723AD6A7}</Project>
+      <Name>Feedback.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -67,16 +84,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FodyWeavers.xml" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Strings\Common\Common.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Common.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <Content Include="FodyWeavers.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets')" />

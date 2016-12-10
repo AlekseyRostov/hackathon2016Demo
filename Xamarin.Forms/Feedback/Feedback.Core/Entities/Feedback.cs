@@ -1,7 +1,9 @@
 ﻿using System;
+using Microsoft.WindowsAzure.MobileServices;
 
 namespace Feedback.Core.Entities
 {
+    [DataTable("FeedbackItem")]
     public class Feedback : BaseEntity
     {
         /// <summary>

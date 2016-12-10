@@ -1,4 +1,5 @@
-﻿using Foundation;
+﻿using Feedback.UI.Core;
+using Foundation;
 using Microsoft.WindowsAzure.MobileServices;
 using UIKit;
 
