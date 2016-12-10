@@ -2,6 +2,6 @@
 {
     public class Constants
     {
-        public const string BaseApiUrl = "http://xamfeedback.azurewebsites.net";
+        public const string BaseApiUrl = "https://xamfeedback.azurewebsites.net";
     }
 }

@@ -37,6 +37,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Strings\Authentication\Common.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Common.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Strings\Common\Common.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -53,6 +58,11 @@
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
     <Compile Include="UIBootstrapper.cs" />
+    <Compile Include="ViewModels\Authentication\ILoginViewModel.cs" />
+    <Compile Include="ViewModels\Authentication\Implementation\AuthenticationFactory.cs" />
+    <Compile Include="ViewModels\Authentication\Implementation\BaseLoginCommand.cs" />
+    <Compile Include="ViewModels\Authentication\Implementation\LoginFacebookCommand.cs" />
+    <Compile Include="ViewModels\Authentication\Implementation\LoginViewModel.cs" />
     <Compile Include="ViewModels\Base\ILoadableViewModel.cs" />
     <Compile Include="ViewModels\Base\Implementation\AsyncCommand.cs" />
     <Compile Include="ViewModels\Base\IAsyncCommand.cs" />
@@ -68,6 +78,10 @@
     <Compile Include="ViewModels\Places\IPlacesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Strings\Authentication\Common.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Common.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings\Common\Common.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>

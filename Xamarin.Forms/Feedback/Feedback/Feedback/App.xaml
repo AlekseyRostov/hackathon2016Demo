@@ -20,10 +20,18 @@
           <Setter Property="TextColor" Value="Gray"/>
           <Setter Property="FontSize" Value="25"/>
           <Setter Property="FontAttributes" Value="Bold"/>
+          <Setter Property="HorizontalTextAlignment" Value="Center"/>
           <Setter Property="HorizontalOptions" Value="Center"/>
           <Setter Property="VerticalOptions" Value="Center"/>
         </Style> 
         <!--End Region Label Style-->
+
+        <!--Region Button Styles-->
+        <Style x:Key="ButtonStyle" TargetType="Button">
+          <Setter Property="TextColor" Value="White"/>
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}"/>
+        <!--End Region Button Styles-->
     </ResourceDictionary>
   </Application.Resources>
 </Application>

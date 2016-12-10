@@ -1,4 +1,6 @@
 ﻿using Feedback.Core;
+using Feedback.UI.ViewModels.Authentication;
+using Feedback.UI.ViewModels.Authentication.Implementation;
 using Feedback.UI.ViewModels.Feedbacks;
 using Feedback.UI.ViewModels.Feedbacks.Implementation;
 using Feedback.UI.ViewModels.Places;
@@ -15,6 +17,8 @@ namespace Feedback.UI
                                  .RegisterType<IPlacesViewModel, PlacesViewModel>()
                                  .RegisterType<FeedbacksFactory>()
                                  .RegisterType<IFeedbacksViewModel, FeedbacksViewModel>()
+                                 .RegisterType<AuthenticationFactory>()
+                                 .RegisterType<ILoginViewModel, LoginViewModel>()
                                  .RegisterCoreDependencies();
         }
     }

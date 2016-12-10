@@ -1,5 +1,4 @@
-﻿using Feedback.UI.Core.Views.Places;
-using Xamarin.Forms;
+﻿using Feedback.UI.Core.Views.Authentication;
 
 namespace Feedback.UI.Core
 {
@@ -8,8 +7,8 @@ namespace Feedback.UI.Core
         public App()
         {
             InitializeComponent();
-            ServiceLocator.Initialize();
-            MainPage = new NavigationPage(new PlacesPage());
+            //MainPage = new NavigationPage(new PlacesPage());
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()

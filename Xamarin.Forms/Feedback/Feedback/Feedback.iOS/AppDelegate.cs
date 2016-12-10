@@ -2,6 +2,7 @@
 using Foundation;
 using Microsoft.WindowsAzure.MobileServices;
 using UIKit;
+using Xamarin.Forms;
 
 namespace Feedback.iOS
 {
@@ -20,8 +21,9 @@ namespace Feedback.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            Forms.Init();
             CurrentPlatform.Init();
-            Xamarin.Forms.Forms.Init();
+            ServiceLocator.Instance.RegisteriOSDependencies();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

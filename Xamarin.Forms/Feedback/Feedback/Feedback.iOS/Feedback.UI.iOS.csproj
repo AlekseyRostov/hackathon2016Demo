@@ -88,8 +88,10 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="iOSBootstrapper.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Services\AuthenticationService.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
@@ -168,6 +170,10 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Feedback.Core\Feedback.Core.csproj">
+      <Project>{CD775321-FB8D-44AE-AC3A-75F6723AD6A7}</Project>
+      <Name>Feedback.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Feedback\Feedback.UI.Core.csproj">
       <Project>{2cfae2cb-fb88-455d-8ab0-0e3c51af7bcc}</Project>
       <Name>Feedback.UI.Core</Name>

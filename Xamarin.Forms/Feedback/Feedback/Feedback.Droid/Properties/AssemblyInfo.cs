@@ -32,5 +32,6 @@ using Android.App;
 
 // Add some common permissions, these can be removed if not needed
 
+[assembly:MetaData("com.facebook.sdk.ApplicationId", Value = "@string/facebook_app_id")]
 [assembly:UsesPermission(Android.Manifest.Permission.Internet)]
 [assembly:UsesPermission(Android.Manifest.Permission.WriteExternalStorage)]
