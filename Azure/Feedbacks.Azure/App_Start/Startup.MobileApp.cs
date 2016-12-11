@@ -19,7 +19,7 @@ namespace Feedbacks.Azure
 
             new MobileAppConfiguration()
                 .AddMobileAppHomeController()
-                //.MapApiControllers()
+                .MapApiControllers()
                 .AddTables( // from the Tables package
                             new MobileAppTableConfiguration()
                                 .MapTableControllers()

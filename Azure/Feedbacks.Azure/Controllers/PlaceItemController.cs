@@ -1,7 +1,6 @@
 ﻿using Feedbacks.Azure.DataObjects;
 using Feedbacks.Azure.Models;
 using Microsoft.Azure.Mobile.Server;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -10,17 +9,19 @@ using System.Web.Http.Controllers;
 namespace Feedbacks.Azure.Controllers
 {
     /// <summary>
-    /// Метод получения места по идентификатору маяка
+    /// Список мест
     /// </summary>
+
     public class PlaceItemController : TableController<PlaceItem>
     {
+
         /// <summary>
-        ///  GET api/placeitem
+        ///  GET GetAllPlaceItems api/placeitem
         /// </summary>
         /// <returns>PlaceItem</returns>
-        public PlaceItem Get(Guid beaconId, int major, int minor)
+        public IQueryable<PlaceItem> GetAllPlaceItems()
         {
-            return Query().FirstOrDefault(x => x.BeaconUUID == beaconId && x.BeaconMajor == major && x.BeaconMinor == minor);
+            return Query();
         }
 
 

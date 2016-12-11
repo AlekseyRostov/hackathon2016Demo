@@ -201,6 +201,7 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="Controllers\FeedbackItemController.cs" />
     <Compile Include="Controllers\PlaceItemController.cs" />
+    <Compile Include="Controllers\PlaceItemCustomController.cs" />
     <Compile Include="DataObjects\FeedbackItem.cs" />
     <Compile Include="DataObjects\PlaceItem.cs" />
     <Compile Include="Models\MobileServiceContext.cs" />
