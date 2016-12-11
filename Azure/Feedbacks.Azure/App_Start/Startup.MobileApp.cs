@@ -25,6 +25,7 @@ namespace Feedbacks.Azure
                                 .MapTableControllers()
                                 .AddEntityFramework()             // from the Entity package
                             )
+                .AddPushNotifications()
                 .ApplyTo(config);
 
             // Use Entity Framework Code First to create database tables based on your DbContext
@@ -44,7 +45,6 @@ namespace Feedbacks.Azure
                     TokenHandler = config.GetAppServiceTokenHandler()
                 });
             }
-
 
             app.UseWebApi(config);
         }

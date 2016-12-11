@@ -1,6 +1,8 @@
 ﻿using Feedbacks.Azure.DataObjects;
 using Feedbacks.Azure.Models;
 using Microsoft.Azure.Mobile.Server;
+using Microsoft.Azure.Mobile.Server.Config;
+using Microsoft.Azure.NotificationHubs;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -40,10 +42,48 @@ namespace Feedbacks.Azure.Controllers
         }
 
         // POST tables/FeedbackItem
+        [Authorize]
         public async Task<IHttpActionResult> PostFeedbackItem(FeedbackItem item)
         {
-            FeedbackItem current = await InsertAsync(item);
+            var current = await InsertAsync(item);
+            await SendPush(item);
             return CreatedAtRoute("Tables", new { id = current.Id }, current);
+        }
+
+        private async Task SendPush(FeedbackItem item)
+        {
+            // Get the settings for the server project.
+            HttpConfiguration config = this.Configuration;
+
+            MobileAppSettingsDictionary settings =
+                this.Configuration.GetMobileAppSettingsProvider().GetMobileAppSettings();
+
+            // Get the Notification Hubs credentials for the Mobile App.
+            string notificationHubName = settings.NotificationHubName;
+            string notificationHubConnection = settings
+                .Connections[MobileAppSettingsKeys.NotificationHubConnectionString].ConnectionString;
+
+            // Create a new Notification Hub client.
+            NotificationHubClient hub = NotificationHubClient
+            .CreateClientFromConnectionString(notificationHubConnection, notificationHubName);
+
+            // iOS payload
+            var appleNotificationPayload = "{\"aps\":{\"alert\":\"" + item.Text + "\"}}";
+
+            try
+            {
+                // Send the push notification and log the results.
+                var result = await hub.SendAppleNativeNotificationAsync(appleNotificationPayload);
+
+                // Write the success result to the logs.
+                config.Services.GetTraceWriter().Info(result.State.ToString());
+            }
+            catch (System.Exception ex)
+            {
+                // Write the failure result to the logs.
+                config.Services.GetTraceWriter()
+                    .Error(ex.Message, null, "Push.SendAsync Error");
+            }
         }
 
         // DELETE tables/FeedbackItem/48D68C86-6EA6-4C25-AA33-223FC9A27959

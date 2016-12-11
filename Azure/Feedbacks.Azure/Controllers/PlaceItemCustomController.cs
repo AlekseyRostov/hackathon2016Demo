@@ -20,7 +20,6 @@ namespace Feedbacks.Azure.Controllers
         /// <param name="major"></param>
         /// <param name="minor"></param>
         /// <returns></returns>
-
         public PlaceItem GetPlaceItem(Guid beaconId, int major, int minor)
         {
             using (var context = new MobileServiceContext())
