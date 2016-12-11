@@ -11,8 +11,9 @@
         </member>
         <member name="M:Feedbacks.Azure.SwaggerConfig.Register(System.Web.Http.HttpConfiguration)">
             <summary>
-            Регистрация сервиса
+            Регистрация сервиса для документации https://github.com/Azure/azure-mobile-apps-net-server/wiki/Adding-Swagger-Metadata-and-Help-UI-to-a-Mobile-App
             </summary>
+            <param name="config"></param>
         </member>
         <member name="T:Feedbacks.Azure.Controllers.FeedbackItemController">
             <summary>
