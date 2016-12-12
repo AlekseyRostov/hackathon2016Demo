@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:strings="clr-namespace:Feedback.UI.Resources.Strings.Feedbacks;assembly=Feedback.UI"
+  x:Class="Feedback.UI.Core.Views.Feedbacks.AddFeedbackPage">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="{x:Static strings:Common.Save}"
+                 Command="{Binding SaveCommand}"/>
+  </ContentPage.ToolbarItems>
+  <Grid>
+    <StackLayout
+      IsVisible="{Binding IsLoading, Converter={StaticResource InverseVisibilityConverter}}"
+      Padding="20">
+      <Label
+        Text="{x:Static strings:Common.WriteFeedback}"/>
+      <Entry
+        Text="{Binding Text, Mode=TwoWay}"
+        HeightRequest="250"
+        HorizontalOptions="FillAndExpand"/>
+    </StackLayout>
+    <ActivityIndicator
+      IsVisible="{Binding IsLoading}"
+      IsRunning="{Binding IsLoading}"
+      HorizontalOptions="Center"
+      VerticalOptions="Center"/>
+  </Grid>
+</ContentPage>

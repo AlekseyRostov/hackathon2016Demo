@@ -1,4 +1,5 @@
-﻿using Feedback.UI.ViewModels.Feedbacks;
+﻿using System;
+using Feedback.UI.ViewModels.Feedbacks;
 using Microsoft.Practices.Unity;
 
 namespace Feedback.UI.Core.Views.Feedbacks
@@ -19,6 +20,11 @@ namespace Feedback.UI.Core.Views.Feedbacks
         {
             base.OnAppearing();
             _viewModel.LoadCommand.Execute(null);
+        }
+
+        private async void AddFeedbackClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AddFeedbackPage(_viewModel.PlaceId));
         }
     }
 }

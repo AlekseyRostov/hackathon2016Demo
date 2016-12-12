@@ -25,13 +25,9 @@
         HasUnevenRows="True">
         <ListView.ItemTemplate>
           <DataTemplate>
-            <ViewCell>
-              <ContentView
-                Padding="15,10,15,10">
-                <Label
-                  Text="{Binding BeaconUUID, Converter={StaticResource ToStringConverter}}"/>
-              </ContentView>
-            </ViewCell>
+            <TextCell
+              Text="{Binding Name}"
+              TextColor="Black"/>
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>

@@ -62,11 +62,29 @@ namespace Feedback.UI.Resources.Strings.Feedbacks {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This place hasn&apos;t received any feedback yet..
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This place hasn&apos;t received any feedbacks yet..
         /// </summary>
         internal static string Placeholder {
             get {
                 return ResourceManager.GetString("Placeholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         
@@ -76,6 +94,15 @@ namespace Feedback.UI.Resources.Strings.Feedbacks {
         internal static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write your feedback below.
+        /// </summary>
+        internal static string WriteFeedback {
+            get {
+                return ResourceManager.GetString("WriteFeedback", resourceCulture);
             }
         }
     }

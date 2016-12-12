@@ -68,10 +68,13 @@
     <Compile Include="ViewModels\Base\IAsyncCommand.cs" />
     <Compile Include="ViewModels\Base\Implementation\BaseLoadableViewModel.cs" />
     <Compile Include="ViewModels\Base\Implementation\AsyncLoadCommand.cs" />
+    <Compile Include="ViewModels\Feedbacks\IAddFeedbackViewModel.cs" />
     <Compile Include="ViewModels\Feedbacks\IFeedbacksViewModel.cs" />
+    <Compile Include="ViewModels\Feedbacks\Implementation\AddFeedbackViewModel.cs" />
     <Compile Include="ViewModels\Feedbacks\Implementation\FeedbacksFactory.cs" />
     <Compile Include="ViewModels\Feedbacks\Implementation\FeedbacksViewModel.cs" />
     <Compile Include="ViewModels\Feedbacks\Implementation\LoadFeedbacksCommand.cs" />
+    <Compile Include="ViewModels\Feedbacks\Implementation\SaveFeedbackCommand.cs" />
     <Compile Include="ViewModels\Places\Implementation\LoadPlacesCommand.cs" />
     <Compile Include="ViewModels\Places\Implementation\PlacesFactory.cs" />
     <Compile Include="ViewModels\Places\Implementation\PlacesViewModel.cs" />

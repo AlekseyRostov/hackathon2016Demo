@@ -5,6 +5,9 @@
   xmlns:strings="clr-namespace:Feedback.UI.Resources.Strings.Feedbacks;assembly=Feedback.UI"
   x:Class="Feedback.UI.Core.Views.Feedbacks.FeedbacksPage"
   Title="{x:Static strings:Common.Title}">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="{x:Static strings:Common.Add}" Clicked="AddFeedbackClicked"/>
+  </ContentPage.ToolbarItems>
   <Grid>
     <Grid
       IsVisible="{Binding IsLoaded}">
@@ -14,13 +17,9 @@
         HasUnevenRows="True">
         <ListView.ItemTemplate>
           <DataTemplate>
-            <ViewCell>
-              <ContentView
-                Padding="15,10,15,10">
-                <Label
-                  Text="{Binding Text}"/>
-              </ContentView>
-            </ViewCell>
+            <TextCell
+              Text="{Binding Text}"
+              TextColor="Black"/>
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>

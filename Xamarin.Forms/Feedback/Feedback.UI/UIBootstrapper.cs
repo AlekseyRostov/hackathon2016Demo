@@ -17,6 +17,7 @@ namespace Feedback.UI
                                  .RegisterType<IPlacesViewModel, PlacesViewModel>()
                                  .RegisterType<FeedbacksFactory>()
                                  .RegisterType<IFeedbacksViewModel, FeedbacksViewModel>()
+                                 .RegisterType<IAddFeedbackViewModel, AddFeedbackViewModel>()
                                  .RegisterType<AuthenticationFactory>()
                                  .RegisterType<ILoginViewModel, LoginViewModel>()
                                  .RegisterCoreDependencies();
