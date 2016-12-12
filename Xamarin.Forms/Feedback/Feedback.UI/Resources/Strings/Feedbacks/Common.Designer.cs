@@ -71,6 +71,24 @@ namespace Feedback.UI.Resources.Strings.Feedbacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string Ok {
+            get {
+                return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This place hasn&apos;t received any feedbacks yet..
         /// </summary>
         internal static string Placeholder {
@@ -85,6 +103,15 @@ namespace Feedback.UI.Resources.Strings.Feedbacks {
         internal static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saving failed. Please try again..
+        /// </summary>
+        internal static string SaveFailure {
+            get {
+                return ResourceManager.GetString("SaveFailure", resourceCulture);
             }
         }
         
