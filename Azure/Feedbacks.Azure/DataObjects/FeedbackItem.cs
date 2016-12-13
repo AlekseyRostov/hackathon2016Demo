@@ -22,5 +22,10 @@ namespace Feedbacks.Azure.DataObjects
         /// Идентификатор места
         /// </summary>
         public string PlaceId { get; set; }
+
+        /// <summary>
+        /// Email пользователя
+        /// </summary>
+        public string UserEmail { get; set; }
     }
 }
