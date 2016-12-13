@@ -66,11 +66,14 @@
     <Compile Include="ViewModels\Base\ILoadableViewModel.cs" />
     <Compile Include="ViewModels\Base\Implementation\AsyncCommand.cs" />
     <Compile Include="ViewModels\Base\IAsyncCommand.cs" />
+    <Compile Include="ViewModels\Base\Implementation\AsyncSaveCommand.cs" />
     <Compile Include="ViewModels\Base\Implementation\BaseLoadableViewModel.cs" />
     <Compile Include="ViewModels\Base\Implementation\AsyncLoadCommand.cs" />
-    <Compile Include="ViewModels\Feedbacks\IAddFeedbackViewModel.cs" />
+    <Compile Include="ViewModels\Base\Implementation\BaseSaveableViewModel.cs" />
+    <Compile Include="ViewModels\Base\ISaveableViewModel.cs" />
+    <Compile Include="ViewModels\Feedbacks\IFeedbackViewModel.cs" />
     <Compile Include="ViewModels\Feedbacks\IFeedbacksViewModel.cs" />
-    <Compile Include="ViewModels\Feedbacks\Implementation\AddFeedbackViewModel.cs" />
+    <Compile Include="ViewModels\Feedbacks\Implementation\FeedbackViewModel.cs" />
     <Compile Include="ViewModels\Feedbacks\Implementation\FeedbacksFactory.cs" />
     <Compile Include="ViewModels\Feedbacks\Implementation\FeedbacksViewModel.cs" />
     <Compile Include="ViewModels\Feedbacks\Implementation\LoadFeedbacksCommand.cs" />
@@ -88,6 +91,7 @@
     <EmbeddedResource Include="Resources\Strings\Common\Common.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Common.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Strings\Feedbacks\Common.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -5,14 +5,14 @@ using Strings = Feedback.UI.Resources.Strings.Feedbacks.Common;
 
 namespace Feedback.UI.Core.Views.Feedbacks
 {
-    public partial class AddFeedbackPage
+    public partial class FeedbackPage
     {
-        private readonly IAddFeedbackViewModel _viewModel;
+        private readonly IFeedbackViewModel _viewModel;
 
-        public AddFeedbackPage(string placeId)
+        public FeedbackPage(string placeId)
         {
             InitializeComponent();
-            _viewModel = ServiceLocator.Instance.Resolve<IAddFeedbackViewModel>();
+            _viewModel = ServiceLocator.Instance.Resolve<IFeedbackViewModel>();
             _viewModel.PlaceId = placeId;
             //TODO:Add actual mail
             _viewModel.UserEmail = "test@mail.com";
@@ -33,13 +33,14 @@ namespace Feedback.UI.Core.Views.Feedbacks
 
         private async void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName == nameof(IAddFeedbackViewModel.IsLoading))
+            if(e.PropertyName == nameof(IFeedbackViewModel.SaveSucceeded) ||
+                e.PropertyName == nameof(IFeedbackViewModel.SaveFailureMessage))
             {
-                if(string.IsNullOrEmpty(_viewModel.LoadFailureMessage))
+                if(_viewModel.SaveSucceeded)
                 {
                     await Navigation.PopAsync();
                 }
-                else
+                else if(!string.IsNullOrEmpty(_viewModel.SaveFailureMessage))
                 {
                     await DisplayAlert(Strings.Error, Strings.SaveFailure, Strings.Ok);
                 }

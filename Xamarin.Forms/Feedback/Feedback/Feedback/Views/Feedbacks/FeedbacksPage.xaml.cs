@@ -24,7 +24,7 @@ namespace Feedback.UI.Core.Views.Feedbacks
 
         private async void AddFeedbackClicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AddFeedbackPage(_viewModel.PlaceId));
+            await Navigation.PushAsync(new FeedbackPage(_viewModel.PlaceId));
         }
     }
 }

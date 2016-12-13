@@ -3,6 +3,6 @@
     public class Constants
     {
         public const string BundleId = "com.xamathon2016.feedback";
-        public const string BaseApiUrl = "https://xamarin2016.azurewebsites.net";
+        public const string BaseApiUrl = "https://xamfeedbacks.azurewebsites.net";
     }
 }

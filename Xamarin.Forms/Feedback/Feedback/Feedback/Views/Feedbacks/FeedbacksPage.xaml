@@ -6,7 +6,8 @@
   x:Class="Feedback.UI.Core.Views.Feedbacks.FeedbacksPage"
   Title="{x:Static strings:Common.Title}">
   <ContentPage.ToolbarItems>
-    <ToolbarItem Text="{x:Static strings:Common.Add}" Clicked="AddFeedbackClicked"/>
+    <ToolbarItem Text="{x:Static strings:Common.Add}"
+                 Clicked="AddFeedbackClicked"/>
   </ContentPage.ToolbarItems>
   <Grid>
     <Grid
@@ -17,9 +18,16 @@
         HasUnevenRows="True">
         <ListView.ItemTemplate>
           <DataTemplate>
-            <TextCell
-              Text="{Binding Text}"
-              TextColor="Black"/>
+            <ViewCell>
+              <StackLayout
+                Padding="15,10,15,10">
+                <Label
+                  Text="{Binding Text}"/>
+                <Label
+                  Text="{Binding UserEmail}"
+                  Style="{StaticResource SubtitleLabelStyle}"/>
+              </StackLayout>
+            </ViewCell>
           </DataTemplate>
         </ListView.ItemTemplate>
       </ListView>

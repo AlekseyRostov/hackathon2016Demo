@@ -20,7 +20,7 @@ namespace Feedback.UI.ViewModels.Feedbacks.Implementation
             return new LoadFeedbacksCommand(viewModel, feedbackService, authenticationService);
         }
 
-        public IAsyncCommand GetSaveFeedbackCommand(AddFeedbackViewModel viewModel)
+        public IAsyncCommand GetSaveFeedbackCommand(FeedbackViewModel viewModel)
         {
             var feedbackService = _container.Resolve<IFeedbackService>();
             var authenticationService = _container.Resolve<IAuthenticationService>();

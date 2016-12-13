@@ -4,12 +4,12 @@ using Feedback.UI.ViewModels.Base.Implementation;
 
 namespace Feedback.UI.ViewModels.Feedbacks.Implementation
 {
-    internal class SaveFeedbackCommand : AsyncLoadCommand
+    internal class SaveFeedbackCommand : AsyncSaveCommand
     {
         private readonly IFeedbackService _feedbackService;
-        private readonly AddFeedbackViewModel _viewModel;
+        private readonly FeedbackViewModel _viewModel;
 
-        public SaveFeedbackCommand(AddFeedbackViewModel viewModel,
+        public SaveFeedbackCommand(FeedbackViewModel viewModel,
                                    IFeedbackService feedbackService,
                                    IAuthenticationService authenticationService) : base(viewModel, authenticationService)
         {

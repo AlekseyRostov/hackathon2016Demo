@@ -8,29 +8,26 @@ using Strings = Feedback.UI.Resources.Strings.Common.Common;
 
 namespace Feedback.UI.ViewModels.Base.Implementation
 {
-    internal abstract class AsyncLoadCommand : AsyncCommand
+    internal abstract class AsyncSaveCommand : AsyncCommand
     {
-        private readonly ILoadableViewModel _viewModel;
+        private readonly ISaveableViewModel _viewModel;
         private readonly IAuthenticationService _authenticationService;
 
-        protected AsyncLoadCommand(ILoadableViewModel viewModel, IAuthenticationService authenticationService)
+        protected AsyncSaveCommand(ISaveableViewModel viewModel, IAuthenticationService authenticationService)
         {
             _authenticationService = authenticationService;
             _viewModel = viewModel;
-            viewModel.IsLoaded = false;
-            viewModel.IsEmpty = true;
         }
 
         public override async Task ExecuteAsync(object param)
         {
-            _viewModel.IsLoaded = false;
-            _viewModel.IsLoading = true;
-            _viewModel.LoadFailureMessage = null;
+            _viewModel.IsSaving = true;
+            _viewModel.SaveFailureMessage = null;
 
             try
             {
                 await ExecuteCoreAsync(param);
-                _viewModel.IsLoaded = true;
+                _viewModel.SaveSucceeded = true;
             }
             catch(Exception ex)
             {
@@ -38,7 +35,7 @@ namespace Feedback.UI.ViewModels.Base.Implementation
             }
             finally
             {
-                _viewModel.IsLoading = false;
+                _viewModel.IsSaving = false;
             }
         }
 
@@ -57,11 +54,11 @@ namespace Feedback.UI.ViewModels.Base.Implementation
 
             if(ex is WebException)
             {
-                _viewModel.LoadFailureMessage = Strings.LoadDataNetworkFailure;
+                _viewModel.SaveFailureMessage = Strings.SaveDataNetworkFailure;
                 return true;
             }
 
-            _viewModel.LoadFailureMessage = Strings.LoadDataUnknownFailure;
+            _viewModel.SaveFailureMessage = Strings.SaveDataUnknownFailure;
             return true;
         }
     }

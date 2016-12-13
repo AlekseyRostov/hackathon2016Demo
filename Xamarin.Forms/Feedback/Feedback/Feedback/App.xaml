@@ -13,8 +13,14 @@
         <!--Region Label Style-->
         <Style x:Key="LabelStyle" TargetType="Label">
           <Setter Property="TextColor" Value="Black"/>
+          <Setter Property="FontSize" Value="16"/>
         </Style>
         <Style TargetType="Label" BasedOn="{StaticResource LabelStyle}"/>
+      
+        <Style x:Key="SubtitleLabelStyle" TargetType="Label" BasedOn="{StaticResource LabelStyle}">
+          <Setter Property="TextColor" Value="Gray"/>
+          <Setter Property="FontSize" Value="14"/>
+        </Style>
       
         <Style x:Key="PlaceholderLabelStyle" TargetType="Label">
           <Setter Property="TextColor" Value="Gray"/>

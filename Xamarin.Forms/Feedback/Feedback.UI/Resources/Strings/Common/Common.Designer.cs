@@ -89,6 +89,24 @@ namespace Feedback.UI.Resources.Strings.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to save data at this time due to network issue. Please check your internet connection and try again..
+        /// </summary>
+        internal static string SaveDataNetworkFailure {
+            get {
+                return ResourceManager.GetString("SaveDataNetworkFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to load data at this time. Please try again later..
+        /// </summary>
+        internal static string SaveDataUnknownFailure {
+            get {
+                return ResourceManager.GetString("SaveDataUnknownFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Warning.
         /// </summary>
         internal static string Warning {
