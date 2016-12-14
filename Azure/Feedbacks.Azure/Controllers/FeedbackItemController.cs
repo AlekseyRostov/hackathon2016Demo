@@ -70,13 +70,22 @@ namespace Feedbacks.Azure.Controllers
             // iOS payload
             var appleNotificationPayload = "{\"aps\":{\"alert\":\"" + item.Text + "\"}}";
 
+            // Google 
+            var googleNotificationPayload = "{\"data\":{\"message\":\"" + item.Text + "\"}}";
+
+
             try
             {
                 // Send the push notification and log the results.
                 var result = await hub.SendAppleNativeNotificationAsync(appleNotificationPayload);
 
+                // Send the push notification and log the results.
+                var resultGoogle = await hub.SendGcmNativeNotificationAsync(googleNotificationPayload);
+
                 // Write the success result to the logs.
                 config.Services.GetTraceWriter().Info(result.State.ToString());
+                // Write the success result to the logs.
+                config.Services.GetTraceWriter().Info(resultGoogle.State.ToString());
             }
             catch (System.Exception ex)
             {
