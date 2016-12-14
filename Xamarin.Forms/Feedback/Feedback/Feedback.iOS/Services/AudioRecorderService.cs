@@ -1,5 +1,6 @@
 ﻿using System;
 using AVFoundation;
+using Feedback.Core.Services;
 using Feedback.UI.Services;
 using Foundation;
 using PCLStorage;
@@ -8,6 +9,7 @@ namespace Feedback.iOS.Services
 {
     public class AudioRecorderService : IAudioRecorderService
     {
+        private readonly IDeviceService _deviceService;
         private AVAudioRecorder _recorder;
         private NSError _error;
         private NSUrl _currentRecordUrl;
@@ -15,8 +17,10 @@ namespace Feedback.iOS.Services
         private Guid _recordId;
         private readonly string _localStorage;
 
-        public AudioRecorderService()
+        public AudioRecorderService(IDeviceService deviceService)
         {
+            _deviceService = deviceService;
+            _deviceService.AudioSampleRate = 44100;
             _localStorage = FileSystem.Current.LocalStorage.Path;
         }
 
@@ -62,7 +66,7 @@ namespace Feedback.iOS.Services
             //set up the NSObject Array of values that will be combined with the keys to make the NSDictionary
             var values = new NSObject[]
                          {
-                             NSNumber.FromFloat(44100.0f), //Sample Rate
+                             NSNumber.FromFloat(_deviceService.AudioSampleRate), //Sample Rate
                              NSNumber.FromInt32((int) AudioToolbox.AudioFormatType.LinearPCM), //AVFormat
                              NSNumber.FromInt32(2), //Channels
                              NSNumber.FromInt32(16), //PCMBitDepth

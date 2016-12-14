@@ -10,6 +10,10 @@
         <converters:InverseVisibilityConverter x:Key="InverseVisibilityConverter"/>
         <!--End Region Converters-->
 
+        <!--Region Colors-->
+        <Color x:Key="Positive">#25811C</Color>
+        <Color x:Key="Negative">#A92C2C</Color>
+        <!--End Region Colors-->
         <!--Region Label Style-->
         <Style x:Key="LabelStyle" TargetType="Label">
           <Setter Property="TextColor" Value="Black"/>
@@ -25,6 +29,14 @@
         <Style x:Key="PlaceholderLabelStyle" TargetType="Label">
           <Setter Property="TextColor" Value="Gray"/>
           <Setter Property="FontSize" Value="25"/>
+          <Setter Property="FontAttributes" Value="Bold"/>
+          <Setter Property="HorizontalTextAlignment" Value="Center"/>
+          <Setter Property="HorizontalOptions" Value="Center"/>
+          <Setter Property="VerticalOptions" Value="Center"/>
+        </Style> 
+      
+        <Style x:Key="ErrorLabelStyle" TargetType="Label" BasedOn="{StaticResource LabelStyle}">
+          <Setter Property="TextColor" Value="Red"/>
           <Setter Property="FontAttributes" Value="Bold"/>
           <Setter Property="HorizontalTextAlignment" Value="Center"/>
           <Setter Property="HorizontalOptions" Value="Center"/>

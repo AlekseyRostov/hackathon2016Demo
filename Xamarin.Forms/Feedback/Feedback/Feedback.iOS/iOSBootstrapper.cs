@@ -10,7 +10,8 @@ namespace Feedback.iOS
         public static IUnityContainer RegisteriOSDependencies(this IUnityContainer container)
         {
             return container.RegisterType<IAuthenticationService, AuthenticationService>(new ContainerControlledLifetimeManager())
-                            .RegisterType<IAudioRecorderService, AudioRecorderService>();
+                            .RegisterType<IAudioRecorderService, AudioRecorderService>()
+                            .RegisterType<IDeviceService, DeviceService>();
             ;
         }
     }

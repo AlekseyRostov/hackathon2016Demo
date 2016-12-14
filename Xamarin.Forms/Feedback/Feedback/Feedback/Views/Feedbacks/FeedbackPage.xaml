@@ -18,18 +18,55 @@
         Text="{Binding Text, Mode=TwoWay}"
         HeightRequest="250"
         HorizontalOptions="FillAndExpand"/>
-      <Button
-        Text="{x:Static strings:Common.StartRecording}"
-        IsVisible="{Binding IsRecording, Converter={StaticResource InverseVisibilityConverter}}"
-        Command="{Binding StartRecordingCommand}"
-        FontAttributes="Bold"
-        BackgroundColor="#25811C"/>
-      <Button
-        Text="{x:Static strings:Common.StopRecording}"
-        IsVisible="{Binding IsRecording}"
-        Command="{Binding StopRecordingCommand}"
-        FontAttributes="Bold"
-        BackgroundColor="#A92C2C"/>
+      <Grid
+        IsVisible="{Binding IsRecognizingSpeech, Converter={StaticResource InverseVisibilityConverter}}"
+        Padding="0">
+        <Button
+          Text="{x:Static strings:Common.StartRecording}"
+          IsVisible="{Binding IsRecording, Converter={StaticResource InverseVisibilityConverter}}"
+          Command="{Binding StartRecordingCommand}"
+          FontAttributes="Bold"
+          BackgroundColor="{StaticResource Positive}"/>
+        <StackLayout
+          IsVisible="{Binding IsRecording}"
+          Orientation="Horizontal"
+          Padding="0"
+          Spacing="10"
+          HorizontalOptions="FillAndExpand">
+          <Button
+            Text="{x:Static strings:Common.StopRecording}"
+            Command="{Binding StopRecordingCommand}"
+            FontAttributes="Bold"
+            BackgroundColor="{StaticResource Negative}"
+            VerticalOptions="Center"
+            HorizontalOptions="FillAndExpand"/>
+          <ActivityIndicator
+            IsRunning="{Binding IsRecording}"
+            Color="{StaticResource Negative}"
+            VerticalOptions="Center"
+            HorizontalOptions="End"/>
+        </StackLayout>
+      </Grid>
+      <StackLayout
+        IsVisible="{Binding IsRecognizingSpeech}"
+        Padding="0"
+        Orientation="Horizontal"
+        Spacing="0"
+        HorizontalOptions="Center">
+        <Label
+          Text="{x:Static strings:Common.Processing}"
+          FontAttributes="Bold"
+          VerticalOptions="Center"
+          TextColor="{StaticResource Positive}"/>
+        <ActivityIndicator
+          IsRunning="{Binding IsRecognizingSpeech}"
+          Color="{StaticResource Positive}"
+          VerticalOptions="Center"/>
+      </StackLayout>
+      <Label
+        Text="{Binding SpeechRecognitionError}"
+        IsVisible="{Binding SpeechRecognitionError, Converter={StaticResource VisibilityConverter}}"
+        Style="{StaticResource ErrorLabelStyle}"/>
     </StackLayout>
     <ActivityIndicator
       IsVisible="{Binding IsSaving}"

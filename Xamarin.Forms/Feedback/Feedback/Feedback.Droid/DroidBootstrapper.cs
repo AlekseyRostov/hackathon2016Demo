@@ -10,7 +10,8 @@ namespace Feedback.Droid
         public static IUnityContainer RegisterDroidDependencies(this IUnityContainer container)
         {
             return container.RegisterType<IAuthenticationService, AuthenticationService>(new ContainerControlledLifetimeManager())
-                            .RegisterType<IAudioRecorderService, AudioRecorderService>();
+                            .RegisterType<IAudioRecorderService, AudioRecorderService>()
+                            .RegisterType<IDeviceService, DeviceService>();
         }
     }
 }

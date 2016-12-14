@@ -44,13 +44,21 @@
     <Compile Include="Entities\Place.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Cognitive\ICognitiveServiceAuthenticator.cs" />
     <Compile Include="Services\IAuthenticationService.cs" />
+    <Compile Include="Services\IDeviceService.cs" />
     <Compile Include="Services\IFeedbackService.cs" />
     <Compile Include="Services\Implementation\BaseAuthenticationService.cs" />
     <Compile Include="Services\Implementation\BaseAzureService.cs" />
+    <Compile Include="Services\Implementation\Cognitive\BingSpeechService.cs" />
+    <Compile Include="Services\Implementation\WebRequestException.cs" />
+    <Compile Include="Services\Implementation\Cognitive\CognitiveServiceAuthenticator.cs" />
     <Compile Include="Services\Implementation\FeedbackService.cs" />
     <Compile Include="Services\Implementation\PlaceService.cs" />
+    <Compile Include="Services\Implementation\Cognitive\Entities\SpeechResponse.cs" />
+    <Compile Include="Services\Implementation\Cognitive\Entities\SpeechResult.cs" />
     <Compile Include="Services\IPlaceService.cs" />
+    <Compile Include="Services\Cognitive\ISpeechService.cs" />
     <Compile Include="Toolbox\CollectionToolbox.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +143,7 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -105,6 +105,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Services\AudioRecorderService.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Services\DeviceService.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />

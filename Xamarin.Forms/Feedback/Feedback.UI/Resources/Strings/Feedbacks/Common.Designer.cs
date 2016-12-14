@@ -98,6 +98,15 @@ namespace Feedback.UI.Resources.Strings.Feedbacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Processing....
+        /// </summary>
+        internal static string Processing {
+            get {
+                return ResourceManager.GetString("Processing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         internal static string Save {
@@ -112,6 +121,15 @@ namespace Feedback.UI.Resources.Strings.Feedbacks {
         internal static string SaveFailure {
             get {
                 return ResourceManager.GetString("SaveFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to recognize speech..
+        /// </summary>
+        internal static string SpeechRecognitionFailure {
+            get {
+                return ResourceManager.GetString("SpeechRecognitionFailure", resourceCulture);
             }
         }
         

@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.ComponentModel;
+using System.Windows.Input;
 using Feedback.UI.Services;
 using Feedback.UI.ViewModels.Base;
 using Feedback.UI.ViewModels.Base.Implementation;
@@ -15,6 +16,8 @@ namespace Feedback.UI.ViewModels.Feedbacks.Implementation
             AudioRecorder = audioRecorder;
             StartRecordingCommand = new StartRecordingCommand(this);
             StopRecordingCommand = new StopRecordingCommand(this);
+            SpeechToTextCommand = factory.GetSpeechToTextCommand(this);
+            PropertyChanged += OnViewModelPropertyChanged;
         }
 
         public ICommand StartRecordingCommand { get; }
@@ -26,5 +29,15 @@ namespace Feedback.UI.ViewModels.Feedbacks.Implementation
         public string PlaceId { get; set; }
         public string Text { get; set; }
         public string UserEmail { get; set; }
+        public bool IsRecognizingSpeech { get; internal set; }
+        public string SpeechRecognitionError { get; internal set; }
+
+        private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == nameof(RecordingPath))
+            {
+                SpeechToTextCommand.Execute(null);
+            }
+        }
     }
 }

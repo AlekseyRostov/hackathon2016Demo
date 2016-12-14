@@ -14,5 +14,7 @@ namespace Feedback.UI.ViewModels.Feedbacks
         IAsyncCommand SpeechToTextCommand { get; }
         string RecordingPath { get; }
         bool IsRecording { get; }
+        bool IsRecognizingSpeech { get; }
+        string SpeechRecognitionError { get; }
     }
 }

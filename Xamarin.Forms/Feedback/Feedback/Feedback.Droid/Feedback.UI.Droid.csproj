@@ -202,6 +202,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AudioRecorderService.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Services\DeviceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

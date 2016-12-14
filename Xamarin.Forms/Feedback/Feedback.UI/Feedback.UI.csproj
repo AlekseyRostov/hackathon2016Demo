@@ -79,6 +79,7 @@
     <Compile Include="ViewModels\Feedbacks\Implementation\FeedbacksViewModel.cs" />
     <Compile Include="ViewModels\Feedbacks\Implementation\LoadFeedbacksCommand.cs" />
     <Compile Include="ViewModels\Feedbacks\Implementation\SaveFeedbackCommand.cs" />
+    <Compile Include="ViewModels\Feedbacks\Implementation\SpeechToTextCommand.cs" />
     <Compile Include="ViewModels\Feedbacks\Implementation\StartRecordingCommand.cs" />
     <Compile Include="ViewModels\Feedbacks\Implementation\StopRecordingCommand.cs" />
     <Compile Include="ViewModels\Places\Implementation\LoadPlacesCommand.cs" />

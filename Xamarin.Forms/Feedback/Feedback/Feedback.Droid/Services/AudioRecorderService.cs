@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Android.Media;
+using Feedback.Core.Services;
 using Feedback.UI.Services;
 using Java.IO;
 
@@ -11,8 +12,8 @@ namespace Feedback.Droid.Services
 {
     public class AudioRecorderService : IAudioRecorderService
     {
+        private readonly IDeviceService _deviceService;
         private const int RecorderBpp = 16;
-        private int _recorderSamplerate;
         private int _bufferSize;
         private readonly Guid _instanceId;
         private readonly ChannelIn _recorderChannels = ChannelIn.Stereo;
@@ -22,8 +23,9 @@ namespace Feedback.Droid.Services
         private bool _isRecording;
         private string _cacheFolder;
 
-        public AudioRecorderService()
+        public AudioRecorderService(IDeviceService deviceService)
         {
+            _deviceService = deviceService;
             _instanceId = Guid.NewGuid();
             Initialize();
         }
@@ -32,7 +34,7 @@ namespace Feedback.Droid.Services
         {
             _recorder?.Release();
 
-            _recorder = new AudioRecord(AudioSource.Mic, _recorderSamplerate, _recorderChannels, _recorderAudioEncoding, _bufferSize);
+            _recorder = new AudioRecord(AudioSource.Mic, _deviceService.AudioSampleRate, _recorderChannels, _recorderAudioEncoding, _bufferSize);
             _recorder.StartRecording();
             _isRecording = true;
 
@@ -109,9 +111,9 @@ namespace Feedback.Droid.Services
 
         private void CopyWaveFile(string tempFile, string permanentFile)
         {
-            long longSampleRate = _recorderSamplerate;
+            long longSampleRate = _deviceService.AudioSampleRate;
             var channels = 2;
-            long byteRate = RecorderBpp*_recorderSamplerate*channels/8;
+            long byteRate = RecorderBpp*longSampleRate*channels/8;
 
             byte[] data = new byte[_bufferSize];
 
@@ -199,7 +201,7 @@ namespace Feedback.Droid.Services
             foreach(int rate in sampleRates.Reverse())
             {
                 _bufferSize = AudioRecord.GetMinBufferSize(rate, _recorderChannels, _recorderAudioEncoding);
-                _recorderSamplerate = rate;
+                _deviceService.AudioSampleRate = rate;
                 if(_bufferSize > 0)
                 {
                     return;
