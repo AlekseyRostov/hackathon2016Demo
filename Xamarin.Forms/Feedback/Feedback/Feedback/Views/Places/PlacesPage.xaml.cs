@@ -29,7 +29,7 @@ namespace Feedback.UI.Core.Views.Places
             {
                 var place = (Place) PlacesListView.SelectedItem;
                 PlacesListView.SelectedItem = null;
-                await Navigation.PushAsync(new FeedbacksPage(place.Id));
+                await Navigation.PushAsync(new FeedbacksPage(place.Id, place.Name));
             }
         }
     }

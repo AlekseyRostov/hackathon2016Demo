@@ -6,6 +6,7 @@ namespace Feedback.UI.ViewModels.Feedbacks
     public interface IFeedbacksViewModel : ILoadableViewModel
     {
         string PlaceId { get; set; }
+        string PlaceName { get; set; }
         ObservableCollection<Core.Entities.Feedback> Feedbacks { get; }
     }
 }

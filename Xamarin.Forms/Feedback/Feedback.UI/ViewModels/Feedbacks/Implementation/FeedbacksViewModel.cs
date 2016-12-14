@@ -11,6 +11,7 @@ namespace Feedback.UI.ViewModels.Feedbacks.Implementation
         }
 
         public string PlaceId { get; set; }
+        public string PlaceName { get; set; }
         public ObservableCollection<Core.Entities.Feedback> Feedbacks { get; internal set; }
     }
 }

@@ -9,12 +9,12 @@ namespace Feedback.UI.Core.Views.Feedbacks
     {
         private readonly IFeedbackViewModel _viewModel;
 
-        public FeedbackPage(string placeId)
+        public FeedbackPage(string placeId, string placeName)
         {
             InitializeComponent();
             _viewModel = ServiceLocator.Instance.Resolve<IFeedbackViewModel>();
             _viewModel.PlaceId = placeId;
-            //TODO:Add actual mail
+            Title = placeName;
             _viewModel.UserEmail = "test@mail.com";
             BindingContext = _viewModel;
         }

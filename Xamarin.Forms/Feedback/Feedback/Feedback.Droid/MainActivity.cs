@@ -3,7 +3,6 @@ using Android.App;
 using Android.Content.PM;
 using Android.OS;
 using Feedback.UI.Core;
-using Feedback.UI.Droid.Resources;
 using Feedback.UI.Droid.Services;
 using Microsoft.WindowsAzure.MobileServices;
 using Xamarin.Forms;

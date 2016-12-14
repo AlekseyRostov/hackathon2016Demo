@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("Feedback.Droid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("Feedback.UI.Droid.Resource", IsApplication=true)]
 
-namespace Feedback.UI.Droid.Resources
+namespace Feedback.UI.Droid
 {
 	
 	
@@ -26,11 +26,11 @@ namespace Feedback.UI.Droid.Resources
 		
 		public static void UpdateIdValues()
 		{
-			global::Gcm.Client.Resource.String.library_name = global::Feedback.UI.Droid.Resources.Resource.String.library_name;
-			global::PCLStorage.Resource.String.ApplicationName = global::Feedback.UI.Droid.Resources.Resource.String.ApplicationName;
-			global::PCLStorage.Resource.String.Hello = global::Feedback.UI.Droid.Resources.Resource.String.Hello;
-			global::Splat.Resource.String.library_name = global::Feedback.UI.Droid.Resources.Resource.String.library_name;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Feedback.UI.Droid.Resources.Resource.Attribute.actionBarSize;
+			global::Gcm.Client.Resource.String.library_name = global::Feedback.UI.Droid.Resource.String.library_name;
+			global::PCLStorage.Resource.String.ApplicationName = global::Feedback.UI.Droid.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::Feedback.UI.Droid.Resource.String.Hello;
+			global::Splat.Resource.String.library_name = global::Feedback.UI.Droid.Resource.String.library_name;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Feedback.UI.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation
