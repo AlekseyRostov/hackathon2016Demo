@@ -1,5 +1,6 @@
 using Feedback.Core.Services;
 using Feedback.Droid.Services;
+using Feedback.UI.Services;
 using Microsoft.Practices.Unity;
 
 namespace Feedback.Droid
@@ -8,7 +9,8 @@ namespace Feedback.Droid
     {
         public static IUnityContainer RegisterDroidDependencies(this IUnityContainer container)
         {
-            return container.RegisterType<IAuthenticationService, AuthenticationService>(new ContainerControlledLifetimeManager());
+            return container.RegisterType<IAuthenticationService, AuthenticationService>(new ContainerControlledLifetimeManager())
+                            .RegisterType<IAudioRecorderService, AudioRecorderService>();
         }
     }
 }

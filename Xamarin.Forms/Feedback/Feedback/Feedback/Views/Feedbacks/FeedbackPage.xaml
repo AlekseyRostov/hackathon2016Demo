@@ -18,6 +18,18 @@
         Text="{Binding Text, Mode=TwoWay}"
         HeightRequest="250"
         HorizontalOptions="FillAndExpand"/>
+      <Button
+        Text="{x:Static strings:Common.StartRecording}"
+        IsVisible="{Binding IsRecording, Converter={StaticResource InverseVisibilityConverter}}"
+        Command="{Binding StartRecordingCommand}"
+        FontAttributes="Bold"
+        BackgroundColor="#25811C"/>
+      <Button
+        Text="{x:Static strings:Common.StopRecording}"
+        IsVisible="{Binding IsRecording}"
+        Command="{Binding StopRecordingCommand}"
+        FontAttributes="Bold"
+        BackgroundColor="#A92C2C"/>
     </StackLayout>
     <ActivityIndicator
       IsVisible="{Binding IsSaving}"

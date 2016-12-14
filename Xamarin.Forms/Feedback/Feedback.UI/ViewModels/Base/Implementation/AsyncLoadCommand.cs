@@ -47,7 +47,7 @@ namespace Feedback.UI.ViewModels.Base.Implementation
         public virtual bool HandleException(Exception ex)
         {
             Debug.WriteLine(ex);
-            
+
             var azureException = ex as MobileServiceInvalidOperationException;
             if(azureException?.Response?.StatusCode == HttpStatusCode.Unauthorized)
             {

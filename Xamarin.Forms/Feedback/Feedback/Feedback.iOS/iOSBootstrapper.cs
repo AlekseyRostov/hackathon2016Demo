@@ -1,5 +1,6 @@
 using Feedback.Core.Services;
 using Feedback.iOS.Services;
+using Feedback.UI.Services;
 using Microsoft.Practices.Unity;
 
 namespace Feedback.iOS
@@ -8,7 +9,9 @@ namespace Feedback.iOS
     {
         public static IUnityContainer RegisteriOSDependencies(this IUnityContainer container)
         {
-            return container.RegisterType<IAuthenticationService, AuthenticationService>(new ContainerControlledLifetimeManager());
+            return container.RegisterType<IAuthenticationService, AuthenticationService>(new ContainerControlledLifetimeManager())
+                            .RegisterType<IAudioRecorderService, AudioRecorderService>();
+            ;
         }
     }
 }

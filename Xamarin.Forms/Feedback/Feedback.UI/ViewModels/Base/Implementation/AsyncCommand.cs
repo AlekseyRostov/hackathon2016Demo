@@ -3,7 +3,7 @@ using TheRX.MVVM.VisualSupport;
 
 namespace Feedback.UI.ViewModels.Base.Implementation
 {
-    public abstract class AsyncCommand : Command, IAsyncCommand
+    internal abstract class AsyncCommand : Command, IAsyncCommand
     {
         public override async void Execute(object parameter)
         {

@@ -1,4 +1,5 @@
-﻿using Feedback.UI.ViewModels.Base;
+﻿using System.Windows.Input;
+using Feedback.UI.ViewModels.Base;
 
 namespace Feedback.UI.ViewModels.Feedbacks
 {
@@ -7,5 +8,11 @@ namespace Feedback.UI.ViewModels.Feedbacks
         string PlaceId { get; set; }
         string Text { get; set; }
         string UserEmail { get; set; }
+
+        ICommand StartRecordingCommand { get; }
+        ICommand StopRecordingCommand { get; }
+        IAsyncCommand SpeechToTextCommand { get; }
+        string RecordingPath { get; }
+        bool IsRecording { get; }
     }
 }

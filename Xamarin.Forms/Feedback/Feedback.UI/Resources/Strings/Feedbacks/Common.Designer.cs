@@ -116,6 +116,24 @@ namespace Feedback.UI.Resources.Strings.Feedbacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start recording.
+        /// </summary>
+        internal static string StartRecording {
+            get {
+                return ResourceManager.GetString("StartRecording", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop recording.
+        /// </summary>
+        internal static string StopRecording {
+            get {
+                return ResourceManager.GetString("StopRecording", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Feedbacks.
         /// </summary>
         internal static string Title {

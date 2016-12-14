@@ -34,7 +34,7 @@ namespace Feedback.UI.Core.Views.Feedbacks
         private async void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if(e.PropertyName == nameof(IFeedbackViewModel.SaveSucceeded) ||
-                e.PropertyName == nameof(IFeedbackViewModel.SaveFailureMessage))
+               e.PropertyName == nameof(IFeedbackViewModel.SaveFailureMessage))
             {
                 if(_viewModel.SaveSucceeded)
                 {
