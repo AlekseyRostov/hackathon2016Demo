@@ -3,7 +3,7 @@ using Android.Webkit;
 using Feedback.Core.Services.Implementation;
 using Microsoft.WindowsAzure.MobileServices;
 
-namespace Feedback.Droid.Services
+namespace Feedback.UI.Droid.Services
 {
     public class AuthenticationService : BaseAuthenticationService
     {

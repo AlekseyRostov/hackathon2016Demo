@@ -1,9 +1,9 @@
 using Feedback.Core.Services;
-using Feedback.Droid.Services;
+using Feedback.UI.Droid.Services;
 using Feedback.UI.Services;
 using Microsoft.Practices.Unity;
 
-namespace Feedback.Droid
+namespace Feedback.UI.Droid
 {
     public static class DroidBootstrapper
     {

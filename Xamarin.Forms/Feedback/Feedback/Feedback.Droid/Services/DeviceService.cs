@@ -1,6 +1,6 @@
 using Feedback.Core.Services;
 
-namespace Feedback.Droid.Services
+namespace Feedback.UI.Droid.Services
 {
     public class DeviceService : IDeviceService
     {

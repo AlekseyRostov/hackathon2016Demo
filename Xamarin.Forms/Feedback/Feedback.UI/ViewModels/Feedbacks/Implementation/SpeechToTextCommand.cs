@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Feedback.Core.Services.Cognitive;
 using Feedback.UI.ViewModels.Base.Implementation;
+using PCLStorage;
 using Strings = Feedback.UI.Resources.Strings.Feedbacks.Common;
 
 namespace Feedback.UI.ViewModels.Feedbacks.Implementation
@@ -25,6 +26,7 @@ namespace Feedback.UI.ViewModels.Feedbacks.Implementation
             {
                 var text = await _speechService.SpeechToTextAsync(_viewModel.RecordingPath, "en-US");
                 _viewModel.Text += " " + text;
+                DeleteRecording(_viewModel.RecordingPath);
             }
             catch(Exception ex)
             {
@@ -34,6 +36,20 @@ namespace Feedback.UI.ViewModels.Feedbacks.Implementation
             finally
             {
                 _viewModel.IsRecognizingSpeech = false;
+            }
+        }
+
+        private async void DeleteRecording(string recordingPath)
+        {
+            try
+            {
+                var file = await FileSystem.Current.GetFileFromPathAsync(recordingPath);
+                await file.DeleteAsync();
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
+                throw;
             }
         }
     }

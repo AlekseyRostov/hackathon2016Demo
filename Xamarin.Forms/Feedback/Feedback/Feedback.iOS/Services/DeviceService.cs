@@ -1,6 +1,6 @@
 using Feedback.Core.Services;
 
-namespace Feedback.iOS.Services
+namespace Feedback.UI.iOS.Services
 {
     public class DeviceService : IDeviceService
     {

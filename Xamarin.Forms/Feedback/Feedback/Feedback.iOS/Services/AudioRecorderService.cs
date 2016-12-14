@@ -5,7 +5,7 @@ using Feedback.UI.Services;
 using Foundation;
 using PCLStorage;
 
-namespace Feedback.iOS.Services
+namespace Feedback.UI.iOS.Services
 {
     public class AudioRecorderService : IAudioRecorderService
     {

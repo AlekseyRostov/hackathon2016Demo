@@ -1,9 +1,9 @@
 using Feedback.Core.Services;
-using Feedback.iOS.Services;
+using Feedback.UI.iOS.Services;
 using Feedback.UI.Services;
 using Microsoft.Practices.Unity;
 
-namespace Feedback.iOS
+namespace Feedback.UI.iOS
 {
     public static class iOSBootstrapper
     {

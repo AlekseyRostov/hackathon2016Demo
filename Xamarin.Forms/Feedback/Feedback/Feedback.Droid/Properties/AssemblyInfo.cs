@@ -35,3 +35,9 @@ using Android.App;
 [assembly:MetaData("com.facebook.sdk.ApplicationId", Value = "@string/facebook_app_id")]
 [assembly:UsesPermission(Android.Manifest.Permission.Internet)]
 [assembly:UsesPermission(Android.Manifest.Permission.WriteExternalStorage)]
+[assembly:UsesPermission(Android.Manifest.Permission.WakeLock)]
+[assembly:UsesPermission(Android.Manifest.Permission.ReceiveBootCompleted)]
+
+//GET_ACCOUNTS is only needed for android versions 4.0.3 and below
+
+[assembly:UsesPermission(Android.Manifest.Permission.GetAccounts)]

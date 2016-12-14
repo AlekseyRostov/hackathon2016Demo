@@ -8,7 +8,7 @@ using Java.IO;
 
 // Ported from: http://www.edumobile.org/android/audio-recording-in-wav-format-in-android-programming/
 
-namespace Feedback.Droid.Services
+namespace Feedback.UI.Droid.Services
 {
     public class AudioRecorderService : IAudioRecorderService
     {

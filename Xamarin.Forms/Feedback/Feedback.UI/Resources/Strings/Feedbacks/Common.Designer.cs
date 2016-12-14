@@ -80,6 +80,15 @@ namespace Feedback.UI.Resources.Strings.Feedbacks {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New feedback added.
+        /// </summary>
+        internal static string NewFeedback {
+            get {
+                return ResourceManager.GetString("NewFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
         internal static string Ok {

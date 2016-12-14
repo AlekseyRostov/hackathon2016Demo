@@ -30,3 +30,5 @@ using System.Runtime.CompilerServices;
 [assembly:AssemblyVersion("1.0.0.0")]
 [assembly:AssemblyFileVersion("1.0.0.0")]
 [assembly:InternalsVisibleTo("Feedback.UI.Core")]
+[assembly:InternalsVisibleTo("Feedback.UI.Droid")]
+[assembly:InternalsVisibleTo("Feedback.UI.iOS")]

@@ -4,7 +4,7 @@ using Foundation;
 using Microsoft.WindowsAzure.MobileServices;
 using UIKit;
 
-namespace Feedback.iOS.Services
+namespace Feedback.UI.iOS.Services
 {
     public class AuthenticationService : BaseAuthenticationService
     {

@@ -123,6 +123,9 @@
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="NewFeedback" xml:space="preserve">
+    <value>New feedback added</value>
+  </data>
   <data name="Ok" xml:space="preserve">
     <value>OK</value>
   </data>

@@ -1,6 +1,6 @@
 ﻿using UIKit;
 
-namespace Feedback.iOS
+namespace Feedback.UI.iOS
 {
     public class Application
     {
