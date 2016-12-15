@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:strings="clr-namespace:Feedback.UI.Resources.Strings.Feedbacks;assembly=Feedback.UI"
+  x:Class="Feedback.UI.Core.Views.Feedbacks.FeedbacksPage">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="{x:Static strings:Common.Add}"
+                 Clicked="AddFeedbackClicked"/>
+  </ContentPage.ToolbarItems>
+  <Grid>
+    <Grid
+      IsVisible="{Binding IsLoaded}">
+      <ListView
+        ItemsSource="{Binding Feedbacks}"
+        IsVisible="{Binding IsEmpty, Converter={StaticResource InverseVisibilityConverter}}"
+        HasUnevenRows="True">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <StackLayout
+                Padding="15,10,15,10">
+                <Label
+                  Text="{Binding Text}"/>
+                <Label
+                  Text="{Binding UserEmail}"
+                  Style="{StaticResource SubtitleLabelStyle}"/>
+              </StackLayout>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <Label
+        Text="{x:Static strings:Common.Placeholder}"
+        IsVisible="{Binding IsEmpty}"
+        Style="{StaticResource PlaceholderLabelStyle}"/>
+    </Grid>
+    <ActivityIndicator
+      IsRunning="{Binding IsLoading}"
+      IsVisible="{Binding IsLoading}"
+      HorizontalOptions="Center"
+      VerticalOptions="Center"/>
+    <Label
+      Text="{Binding LoadFailureMessage}"
+      IsVisible="{Binding LoadFailureMessage, Converter={StaticResource VisibilityConverter}}"
+      Style="{StaticResource PlaceholderLabelStyle}"/>
+  </Grid>
+</ContentPage>

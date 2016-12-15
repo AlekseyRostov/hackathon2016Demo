@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:converters="clr-namespace:Feedback.UI.Core.Converters;assembly=Feedback.UI.Core"
+  xmlns:strings="clr-namespace:Feedback.UI.Resources.Strings.Places;assembly=Feedback.UI"
+  x:Class="Feedback.UI.Core.Views.Places.PlacesPage"
+  Title="{x:Static strings:Common.Title}">
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:ToStringConverter x:Key="ToStringConverter"/>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="{x:Static strings:Common.Logout}" Command="{Binding LogoutCommand}"/>
+  </ContentPage.ToolbarItems>
+  <Grid>
+    <Grid
+      IsVisible="{Binding IsLoaded}">
+      <ListView
+        x:Name="PlacesListView"
+        ItemsSource="{Binding Places}"
+        ItemSelected="ListView_OnItemSelected"
+        IsVisible="{Binding IsEmpty, Converter={StaticResource InverseVisibilityConverter}}"
+        HasUnevenRows="True">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <TextCell
+              Text="{Binding Name}"
+              TextColor="Black"/>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <Label
+        Text="{x:Static strings:Common.Placeholder}"
+        IsVisible="{Binding IsEmpty}"
+        Style="{StaticResource PlaceholderLabelStyle}"/>
+    </Grid>
+    <ActivityIndicator
+      IsRunning="{Binding IsLoading}"
+      IsVisible="{Binding IsLoading}"
+      HorizontalOptions="Center"
+      VerticalOptions="Center"/>
+    <Label
+      Text="{Binding LoadFailureMessage}"
+      IsVisible="{Binding LoadFailureMessage, Converter={StaticResource VisibilityConverter}}"
+      Style="{StaticResource PlaceholderLabelStyle}"/>
+  </Grid>
+</ContentPage>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Feedback.UI.Core.Converters;assembly=Feedback.UI.Core"
+             x:Class="Feedback.UI.Core.App">
+  <Application.Resources>
+    <ResourceDictionary>
+        <!--Region Converters-->
+        <converters:VisibilityConverter x:Key="VisibilityConverter"/>
+        <converters:InverseVisibilityConverter x:Key="InverseVisibilityConverter"/>
+        <!--End Region Converters-->
+
+        <!--Region Colors-->
+        <Color x:Key="Positive">#25811C</Color>
+        <Color x:Key="Negative">#A92C2C</Color>
+        <!--End Region Colors-->
+        <!--Region Label Style-->
+        <Style x:Key="LabelStyle" TargetType="Label">
+          <Setter Property="TextColor" Value="Black"/>
+          <Setter Property="FontSize" Value="16"/>
+        </Style>
+        <Style TargetType="Label" BasedOn="{StaticResource LabelStyle}"/>
+      
+        <Style x:Key="SubtitleLabelStyle" TargetType="Label" BasedOn="{StaticResource LabelStyle}">
+          <Setter Property="TextColor" Value="Gray"/>
+          <Setter Property="FontSize" Value="14"/>
+        </Style>
+      
+        <Style x:Key="PlaceholderLabelStyle" TargetType="Label">
+          <Setter Property="TextColor" Value="Gray"/>
+          <Setter Property="FontSize" Value="25"/>
+          <Setter Property="FontAttributes" Value="Bold"/>
+          <Setter Property="HorizontalTextAlignment" Value="Center"/>
+          <Setter Property="HorizontalOptions" Value="Center"/>
+          <Setter Property="VerticalOptions" Value="Center"/>
+        </Style> 
+      
+        <Style x:Key="ErrorLabelStyle" TargetType="Label" BasedOn="{StaticResource LabelStyle}">
+          <Setter Property="TextColor" Value="Red"/>
+          <Setter Property="FontAttributes" Value="Bold"/>
+          <Setter Property="HorizontalTextAlignment" Value="Center"/>
+          <Setter Property="HorizontalOptions" Value="Center"/>
+          <Setter Property="VerticalOptions" Value="Center"/>
+        </Style> 
+        <!--End Region Label Style-->
+
+        <!--Region Button Styles-->
+        <Style x:Key="ButtonStyle" TargetType="Button">
+          <Setter Property="TextColor" Value="White"/>
+        </Style>
+        <Style TargetType="Button" BasedOn="{StaticResource ButtonStyle}"/>
+        <!--End Region Button Styles-->
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>
