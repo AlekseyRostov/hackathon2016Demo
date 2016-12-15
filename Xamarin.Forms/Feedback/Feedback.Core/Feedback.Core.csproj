@@ -40,6 +40,8 @@
     <Compile Include="Constants.cs" />
     <Compile Include="CoreBootstrapper.cs" />
     <Compile Include="Entities\BaseEntity.cs" />
+    <Compile Include="Entities\BeaconModel.cs" />
+    <Compile Include="Entities\BeaconActivity.cs" />
     <Compile Include="Entities\Feedback.cs" />
     <Compile Include="Entities\Place.cs" />
     <Compile Include="Entities\User.cs" />

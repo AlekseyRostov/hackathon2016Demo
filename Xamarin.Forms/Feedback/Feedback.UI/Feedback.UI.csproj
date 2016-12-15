@@ -58,6 +58,8 @@
       <DependentUpon>Common.resx</DependentUpon>
     </Compile>
     <Compile Include="Services\IAudioRecorderService.cs" />
+    <Compile Include="Services\IBeaconLocationService.cs" />
+    <Compile Include="Services\Implementation\BaseBeaconLocationService.cs" />
     <Compile Include="UIBootstrapper.cs" />
     <Compile Include="ViewModels\Authentication\ILoginViewModel.cs" />
     <Compile Include="ViewModels\Authentication\Implementation\AuthenticationFactory.cs" />

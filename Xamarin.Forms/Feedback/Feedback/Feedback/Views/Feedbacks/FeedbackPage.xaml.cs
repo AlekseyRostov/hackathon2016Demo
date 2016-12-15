@@ -7,28 +7,28 @@ namespace Feedback.UI.Core.Views.Feedbacks
 {
     public partial class FeedbackPage
     {
-        private readonly IFeedbackViewModel _viewModel;
+        public IFeedbackViewModel ViewModel { get; }
 
         public FeedbackPage(string placeId, string placeName)
         {
             InitializeComponent();
-            _viewModel = ServiceLocator.Instance.Resolve<IFeedbackViewModel>();
-            _viewModel.PlaceId = placeId;
+            ViewModel = ServiceLocator.Instance.Resolve<IFeedbackViewModel>();
+            ViewModel.PlaceId = placeId;
             Title = placeName;
-            _viewModel.UserEmail = "test@mail.com";
-            BindingContext = _viewModel;
+            ViewModel.UserEmail = "test@mail.com";
+            BindingContext = ViewModel;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _viewModel.PropertyChanged += ViewModelOnPropertyChanged;
+            ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            _viewModel.PropertyChanged -= ViewModelOnPropertyChanged;
+            ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
         }
 
         private async void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -36,11 +36,11 @@ namespace Feedback.UI.Core.Views.Feedbacks
             if(e.PropertyName == nameof(IFeedbackViewModel.SaveSucceeded) ||
                e.PropertyName == nameof(IFeedbackViewModel.SaveFailureMessage))
             {
-                if(_viewModel.SaveSucceeded)
+                if(ViewModel.SaveSucceeded)
                 {
                     await Navigation.PopAsync();
                 }
-                else if(!string.IsNullOrEmpty(_viewModel.SaveFailureMessage))
+                else if(!string.IsNullOrEmpty(ViewModel.SaveFailureMessage))
                 {
                     await DisplayAlert(Strings.Error, Strings.SaveFailure, Strings.Ok);
                 }

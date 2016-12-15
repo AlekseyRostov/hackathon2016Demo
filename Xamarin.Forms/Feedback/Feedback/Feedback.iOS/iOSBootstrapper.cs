@@ -11,7 +11,8 @@ namespace Feedback.UI.iOS
         {
             return container.RegisterType<IAuthenticationService, AuthenticationService>(new ContainerControlledLifetimeManager())
                             .RegisterType<IAudioRecorderService, AudioRecorderService>()
-                            .RegisterType<IDeviceService, DeviceService>();
+                            .RegisterType<IDeviceService, DeviceService>()
+                            .RegisterType<IBeaconLocationService, BeaconLocationService>();
             ;
         }
     }

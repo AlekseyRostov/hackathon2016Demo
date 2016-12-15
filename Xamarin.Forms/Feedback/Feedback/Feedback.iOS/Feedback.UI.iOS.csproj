@@ -105,6 +105,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Services\AudioRecorderService.cs" />
     <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Services\BeaconLocationService.cs" />
     <Compile Include="Services\DeviceService.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />
@@ -167,6 +168,10 @@
     </Reference>
     <Reference Include="PCLStorage.Abstractions, Version=1.0.2.0, Culture=neutral, PublicKeyToken=286fe515a2c35b64, processorArchitecture=MSIL">
       <HintPath>..\..\packages\PCLStorage.1.0.2\lib\portable-Xamarin.iOS+Xamarin.Mac\PCLStorage.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PubSub, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\PubSub.1.5.0\lib\portable-net45+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\PubSub.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Splat, Version=1.6.0.0, Culture=neutral, processorArchitecture=MSIL">

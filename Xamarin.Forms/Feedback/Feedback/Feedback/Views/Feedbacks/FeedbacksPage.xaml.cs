@@ -1,6 +1,7 @@
 ﻿using System;
 using Feedback.UI.ViewModels.Feedbacks;
 using Microsoft.Practices.Unity;
+
 namespace Feedback.UI.Core.Views.Feedbacks
 {
     public partial class FeedbacksPage
