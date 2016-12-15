@@ -78,7 +78,12 @@ namespace Feedback.UI.Core
             {
                 _beaconLocationService = ServiceLocator.Instance.Resolve<IBeaconLocationService>();
                 _beaconLocationService.BeaconFound += OnBeaconFound;
-                _beaconLocationService.StartMonitoring(new[] {new BeaconModel {UUID = "6BF6DBA4-6D12-4C42-AE68-5344159683E3"}});
+                _beaconLocationService.StartMonitoring(new[] {new BeaconModel
+                                                              {
+                                                                  UUID = "6BF6DBA4-6D12-4C42-AE68-5344159683E3",
+                                                                  Minor = 1,
+                                                                  Major = 8
+                                                              }});
             }
             else if(_beaconLocationService != null)
             {

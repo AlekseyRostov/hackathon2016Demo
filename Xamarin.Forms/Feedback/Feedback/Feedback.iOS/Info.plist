@@ -98,5 +98,7 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>We use your location to track nearby places.</string>
 </dict>
 </plist>
