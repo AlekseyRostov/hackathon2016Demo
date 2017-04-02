@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{97182FA2-C0BC-4504-A140-12873F79D533}</ProjectGuid>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Feedback.Core</RootNamespace>
+    <AssemblyName>Feedback.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile151</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Extentions\EnumerableExtentions.cs" />
+    <Compile Include="Services\IDeviceService.cs" />
+    <Compile Include="Services\Implementations\BaseAuthenticationService.cs" />
+    <Compile Include="Services\IAuthenticationService.cs" />
+    <Compile Include="Services\Implementations\BingSpeechService.cs" />
+    <Compile Include="Services\ISpeechService.cs" />
+    <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="Messages\UserChangedMessage.cs" />
+    <Compile Include="App.cs" />
+    <Compile Include="Services\IAudioRecorderService.cs" />
+    <Compile Include="Services\IBeaconLocationService.cs" />
+    <Compile Include="Services\Implementations\BaseBeaconLocationService.cs" />
+    <Compile Include="ViewModels\_base\ILoadableViewModel.cs" />
+    <Compile Include="ViewModels\_base\ISaveableViewModel.cs" />
+    <Compile Include="ViewModels\_base\Commands\IAsyncCommand.cs" />
+    <Compile Include="ViewModels\_base\Commands\AsyncCommand.cs" />
+    <Compile Include="ViewModels\_base\Commands\AsyncLoadCommand.cs" />
+    <Compile Include="ViewModels\_base\Commands\AsyncSaveCommand.cs" />
+    <Compile Include="ViewModels\_base\BaseLoadableViewModel.cs" />
+    <Compile Include="ViewModels\_base\BaseSaveableViewModel.cs" />
+    <Compile Include="Resources\Strings\Authentication\Common.Designer.cs" />
+    <Compile Include="Resources\Strings\Common\Common.Designer.cs" />
+    <Compile Include="Resources\Strings\Feedbacks\Common.Designer.cs" />
+    <Compile Include="Resources\Strings\Places\Common.Designer.cs" />
+    <Compile Include="ViewModels\Login\ILoginViewModel.cs" />
+    <Compile Include="ViewModels\Login\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Login\Commands\BaseLoginCommand.cs" />
+    <Compile Include="ViewModels\Login\Commands\LoginFacebookCommand.cs" />
+    <Compile Include="ViewModels\Places\IPlacesViewModel.cs" />
+    <Compile Include="ViewModels\Places\PlacesViewModel.cs" />
+    <Compile Include="ViewModels\Places\Commands\LoadPlacesCommand.cs" />
+    <Compile Include="ViewModels\Places\Commands\LogoutCommand.cs" />
+    <Compile Include="ViewModels\Feedbacks\IFeedbacksViewModel.cs" />
+    <Compile Include="ViewModels\Feedbacks\FeedbacksViewModel.cs" />
+    <Compile Include="ViewModels\Feedbacks\Feedback\FeedbackViewModel.cs" />
+    <Compile Include="ViewModels\Feedbacks\Feedback\IFeedbackViewModel.cs" />
+    <Compile Include="ViewModels\Feedbacks\Commands\LoadFeedbacksCommand.cs" />
+    <Compile Include="ViewModels\Feedbacks\Feedback\Commands\SaveFeedbackCommand.cs" />
+    <Compile Include="ViewModels\Feedbacks\Feedback\Commands\SpeechToTextCommand.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extentions\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Implementations\" />
+    <Folder Include="Messages\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\_base\" />
+    <Folder Include="ViewModels\Login\" />
+    <Folder Include="ViewModels\Feedbacks\" />
+    <Folder Include="ViewModels\Places\" />
+    <Folder Include="ViewModels\_base\Commands\" />
+    <Folder Include="ViewModels\Login\Commands\" />
+    <Folder Include="ViewModels\Places\Commands\" />
+    <Folder Include="ViewModels\Feedbacks\Feedback\" />
+    <Folder Include="ViewModels\Feedbacks\Commands\" />
+    <Folder Include="ViewModels\Feedbacks\Feedback\Commands\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\API\Feedback.API.csproj">
+      <Project>{D7B8605E-526C-4EAC-8C35-7DA4016A3F5C}</Project>
+      <Name>Feedback.API</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Platform">
+      <HintPath>..\packages\MvvmCross.Platform.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Core">
+      <HintPath>..\packages\MvvmCross.Core.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Binding">
+      <HintPath>..\packages\MvvmCross.Binding.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.Binding.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLStorage.Abstractions">
+      <HintPath>..\packages\PCLStorage.1.0.2\lib\portable-net45+wp8+wpa81+win8+monoandroid+monotouch+Xamarin.iOS+Xamarin.Mac\PCLStorage.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLStorage">
+      <HintPath>..\packages\PCLStorage.1.0.2\lib\portable-net45+wp8+wpa81+win8+monoandroid+monotouch+Xamarin.iOS+Xamarin.Mac\PCLStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Mobile">
+      <HintPath>..\packages\Microsoft.Azure.Mobile.Client.3.1.0\lib\portable-win+net45+wp8+wpa81+monotouch+monoandroid\Microsoft.WindowsAzure.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\packages\Rx-Interfaces.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Core">
+      <HintPath>..\packages\Rx-Core.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Linq">
+      <HintPath>..\packages\Rx-Linq.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.PlatformServices">
+      <HintPath>..\packages\Rx-PlatformServices.2.2.5\lib\portable-net45+winrt45+wp8+wpa81\System.Reactive.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat">
+      <HintPath>..\packages\Splat.1.6.0\lib\Portable-net45+win+wpa81+wp80\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="Akavache">
+      <HintPath>..\packages\akavache.core.5.0.0\lib\Portable-Net45+Win8+WP8+Wpa81\Akavache.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core">
+      <HintPath>..\packages\SQLitePCLRaw.core.1.1.0\lib\portable-net45+netcore45+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCLRaw.core.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_e_sqlite3">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.1.1.0\lib\portable-net45+netcore45+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCLRaw.batteries_e_sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.batteries_v2">
+      <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.1.1.0\lib\portable-net45+netcore45+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
+    </Reference>
+    <Reference Include="Akavache.Sqlite3">
+      <HintPath>..\packages\akavache.sqlite3.5.0.0\lib\Portable-Net45+Win8+WP8+Wpa81\Akavache.Sqlite3.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.Plugin.Messenger.4.4.0\lib\portable-net45+win+wpa81+wp80\MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
+    <Reference Include="PropertyChanged">
+      <HintPath>..\packages\PropertyChanged.Fody.1.52.1\Lib\portable-net4+sl4+wp8+win8+wpa81+MonoAndroid16+MonoTouch40\PropertyChanged.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Resources\Strings\Authentication\Common.resx" />
+    <None Include="Resources\Strings\Common\Common.resx" />
+    <None Include="Resources\Strings\Feedbacks\Common.resx" />
+    <None Include="Resources\Strings\Places\Common.resx" />
+    <None Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\portable-net+sl+win+wpa+wp\Fody.targets')" />
+</Project>
