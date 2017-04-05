@@ -3,9 +3,8 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Feedback.Core.Services;
 using Feedback.Core.ViewModels.Commands;
-using PCLStorage;
-using Strings = Feedback.Core.Resources.Strings.Feedbacks.Common;
 using MvvmCross.Platform;
+using PCLStorage;
 
 namespace Feedback.Core.ViewModels.Feedbacks.Feedback.Commands
 {
@@ -34,7 +33,7 @@ namespace Feedback.Core.ViewModels.Feedbacks.Feedback.Commands
             catch(Exception ex)
             {
                 Debug.WriteLine(ex);
-                _viewModel.SpeechRecognitionError = Strings.SpeechRecognitionFailure;
+                _viewModel.SpeechRecognitionError = "Failed to recognize speech.";
             }
             finally
             {

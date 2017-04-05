@@ -6,12 +6,20 @@ using PropertyChanged;
 using MvvmCross.Platform;
 using MvvmCross.Core.ViewModels;
 using Feedback.Core.ViewModels.Feedbacks.Feedback.Commands;
+using Feedback.Core.Messages;
+using MvvmCross.Plugins.Messenger;
 
 namespace Feedback.Core.ViewModels.Feedbacks.Feedback
 {
     [ImplementPropertyChanged]
     internal class FeedbackViewModel : BaseSaveableViewModel, IFeedbackViewModel
     {
+        #region Fields
+
+        private MvxSubscriptionToken _subscriptionToken;
+
+        #endregion
+
         #region Commands
 
         private ICommand _startRecordingCommand;
@@ -68,6 +76,8 @@ namespace Feedback.Core.ViewModels.Feedbacks.Feedback
 
         public string PlaceId { get; set; }
 
+        public string PlaceName { get; set; }
+
         public string Text { get; set; }
 
         public string UserEmail { get; set; }
@@ -95,6 +105,30 @@ namespace Feedback.Core.ViewModels.Feedbacks.Feedback
             {
                 SpeechToTextCommand.Execute(null);
             }
+            else if (e.PropertyName == nameof(SaveSucceeded) || e.PropertyName == nameof(SaveFailureMessage))
+            {
+                if (SaveSucceeded)
+                    Close(this);
+                else if (!string.IsNullOrEmpty(SaveFailureMessage))
+                {
+                    
+                }
+            }
+        }
+
+        private void OnBeaconFound(BeaconFoundMessage msg)
+        {
+
+        }
+
+        public void Init(string id, string name)
+        {
+            PlaceId = id;
+            PlaceName = name;
+
+            UserEmail = "test@mail.com";
+
+            _subscriptionToken = Mvx.Resolve<IMvxMessenger>().Subscribe<BeaconFoundMessage>(OnBeaconFound);
         }
     }
 }

@@ -1,59 +1,90 @@
-﻿using Foundation;
+﻿using Feedback.API;
+using Foundation;
+using MvvmCross.Core.ViewModels;
+using MvvmCross.iOS.Platform;
+using MvvmCross.Platform;
 using UIKit;
+using WindowsAzure.Messaging;
+using Feedback.iOS.Presenter;
 
 namespace Feedback.iOS
 {
-    // The UIApplicationDelegate for the application. This class is responsible for launching the
-    // User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
     [Register("AppDelegate")]
-    public class AppDelegate : UIApplicationDelegate
+    public partial class AppDelegate : MvxApplicationDelegate
     {
-        // class-level declarations
+        private const string TemplateBodyApns = "{\"aps\":{\"alert\":\"$(messageParam)\"}}";
 
-        public override UIWindow Window
-        {
-            get;
-            set;
-        }
+        public override UIWindow Window { get; set; }
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
-            // Override point for customization after application launch.
-            // If not required for your application you can safely delete this method
+            Window = new UIWindow(UIScreen.MainScreen.Bounds);
+
+            var setup = new Setup(this, new FeedbackIosViewPresenter(this, Window));
+            setup.Initialize();
+
+            var startup = Mvx.Resolve<IMvxAppStart>();
+            startup.Start();
+
+            RegisterPushNotifications();
+
+            Window.MakeKeyAndVisible();
 
             return true;
         }
 
-        public override void OnResignActivation(UIApplication application)
+        #region Push notifications
+
+        private void RegisterPushNotifications()
         {
-            // Invoked when the application is about to move from active to inactive state.
-            // This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) 
-            // or when the user quits the application and it begins the transition to the background state.
-            // Games should use this method to pause the game.
+            var settings = UIUserNotificationSettings.GetSettingsForTypes(UIUserNotificationType.Alert, new NSSet());
+
+            UIApplication.SharedApplication.RegisterUserNotificationSettings(settings);
+            UIApplication.SharedApplication.RegisterForRemoteNotifications();
         }
 
-        public override void DidEnterBackground(UIApplication application)
+        public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
         {
-            // Use this method to release shared resources, save user data, invalidate timers and store the application state.
-            // If your application supports background exection this method is called instead of WillTerminate when the user quits.
+            var connectionString = SBConnectionString.CreateListenAccess(new NSUrl(Constants.NotificationHubUrl),
+                                                                         Constants.NotificationHubKey);
+            var hub = new SBNotificationHub(connectionString, Constants.NotificationHubName);
+
+            hub.UnregisterAllAsync(deviceToken, error =>
+                                                {
+                                                    if (error != null)
+                                                    {
+                                                        System.Diagnostics.Debug.WriteLine("Error calling Unregister: {0}", error.ToString());
+                                                        return;
+                                                    }
+
+                                                    NSSet tags = null; // create tags if you want
+                                                    hub.RegisterNativeAsync(deviceToken, tags, errorCallback =>
+                                                                                               {
+                                                                                                   if (errorCallback != null)
+                                                                                                       System.Diagnostics.Debug.WriteLine("RegisterNativeAsync error: " + errorCallback.ToString());
+                                                                                               });
+                                                });
         }
 
-        public override void WillEnterForeground(UIApplication application)
+        public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, System.Action<UIBackgroundFetchResult> completionHandler)
         {
-            // Called as part of the transiton from background to active state.
-            // Here you can undo many of the changes made on entering the background.
+            var notification = (NSDictionary)userInfo.ObjectForKey(new NSString("aps"));
+
+            string alert = string.Empty;
+            if (notification.ContainsKey(new NSString("alert")))
+            {
+                alert = ((NSString)notification[new NSString("alert")]).ToString();
+            }
+
+            // Show alert
+            if (!string.IsNullOrEmpty(alert))
+            {
+                UIAlertView avAlert = new UIAlertView("New feedback added", alert, null, "OK", null);
+                avAlert.Show();
+            }
         }
 
-        public override void OnActivated(UIApplication application)
-        {
-            // Restart any tasks that were paused (or not yet started) while the application was inactive. 
-            // If the application was previously in the background, optionally refresh the user interface.
-        }
-
-        public override void WillTerminate(UIApplication application)
-        {
-            // Called when the application is about to terminate. Save data, if needed. See also DidEnterBackground.
-        }
+        #endregion
     }
 }
 

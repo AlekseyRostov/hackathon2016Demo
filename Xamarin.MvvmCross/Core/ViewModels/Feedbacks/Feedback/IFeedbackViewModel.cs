@@ -5,8 +5,11 @@ namespace Feedback.Core.ViewModels.Feedbacks.Feedback
 {
     public interface IFeedbackViewModel : ISaveableViewModel
     {
-        string PlaceId { get; set; }
+        string PlaceId { get; }
+        string PlaceName { get; }
+
         string Text { get; set; }
+
         string UserEmail { get; set; }
 
         ICommand StartRecordingCommand { get; }

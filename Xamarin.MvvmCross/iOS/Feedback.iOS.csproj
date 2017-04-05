@@ -70,7 +70,7 @@
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Максим Евтух (CSX6R4KTV4)</CodesignKey>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchDebug>true</MtouchDebug>
     <MtouchFastDev>true</MtouchFastDev>
@@ -78,11 +78,12 @@
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignProvision>fd35a0b1-fc49-4522-b70c-4fe0fb988d09</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -176,6 +177,15 @@
     <Reference Include="MvvmCross.Localization">
       <HintPath>..\packages\MvvmCross.Binding.4.4.0\lib\Xamarin.iOS10\MvvmCross.Localization.dll</HintPath>
     </Reference>
+    <Reference Include="MvvmCross.Plugins.Visibility">
+      <HintPath>..\packages\MvvmCross.Plugin.Visibility.4.4.0\lib\Xamarin.iOS10\MvvmCross.Plugins.Visibility.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross.Plugins.Visibility.iOS">
+      <HintPath>..\packages\MvvmCross.Plugin.Visibility.4.4.0\lib\Xamarin.iOS10\MvvmCross.Plugins.Visibility.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Azure.NotificationHubs.iOS">
+      <HintPath>..\packages\Xamarin.Azure.NotificationHubs.iOS.1.2.5.2\lib\Xamarin.iOS10\Xamarin.Azure.NotificationHubs.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Feedback.Core.csproj">
@@ -193,26 +203,69 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Views\Login\" />
+    <Folder Include="Views\Feedbacks\" />
+    <Folder Include="Views\Places\" />
+    <Folder Include="Services\" />
+    <Folder Include="Presenter\" />
+    <Folder Include="Views\Places\Cells\" />
+    <Folder Include="Views\Feedbacks\Cells\" />
+    <Folder Include="Views\Feedbacks\Feedback\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="Views\Login\LoginViewController.xib" />
+    <InterfaceDefinition Include="Views\Places\PlacesViewController.xib" />
+    <InterfaceDefinition Include="Views\Places\Cells\PlacesCell.xib" />
+    <InterfaceDefinition Include="Views\Feedbacks\FeedbacksViewController.xib" />
+    <InterfaceDefinition Include="Views\Feedbacks\Cells\FeedbacksCell.xib" />
+    <InterfaceDefinition Include="Views\Feedbacks\Feedback\FeedbackViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
     <None Include="FodyWeavers.xml" />
+    <None Include="ToDo-MvvmCross\_ iOS UI.txt" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
+    <Compile Include="Setup.cs" />
+    <Compile Include="LinkerPleaseInclude.cs" />
+    <Compile Include="FeedbackDebugTrace.cs" />
+    <Compile Include="Bootstrap\VisibilityPluginBootstrap.cs" />
+    <Compile Include="Views\Login\LoginViewController.cs" />
+    <Compile Include="Views\Login\LoginViewController.designer.cs">
+      <DependentUpon>LoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AudioRecorderService.cs" />
+    <Compile Include="Services\AuthenticationService.cs" />
+    <Compile Include="Services\BeaconLocationService.cs" />
+    <Compile Include="Services\DeviceService.cs" />
+    <Compile Include="Presenter\FeedbackIosViewPresenter.cs" />
+    <Compile Include="Views\Places\PlacesViewController.cs" />
+    <Compile Include="Views\Places\PlacesViewController.designer.cs">
+      <DependentUpon>PlacesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Places\Cells\PlacesCell.cs" />
+    <Compile Include="Views\Places\Cells\PlacesCell.designer.cs">
+      <DependentUpon>PlacesCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Feedbacks\FeedbacksViewController.cs" />
+    <Compile Include="Views\Feedbacks\FeedbacksViewController.designer.cs">
+      <DependentUpon>FeedbacksViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Feedbacks\Cells\FeedbacksCell.cs" />
+    <Compile Include="Views\Feedbacks\Cells\FeedbacksCell.designer.cs">
+      <DependentUpon>FeedbacksCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Feedbacks\Feedback\FeedbackViewController.cs" />
+    <Compile Include="Views\Feedbacks\Feedback\FeedbackViewController.designer.cs">
+      <DependentUpon>FeedbackViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />

@@ -48,10 +48,6 @@
     <Compile Include="ViewModels\_base\Commands\AsyncSaveCommand.cs" />
     <Compile Include="ViewModels\_base\BaseLoadableViewModel.cs" />
     <Compile Include="ViewModels\_base\BaseSaveableViewModel.cs" />
-    <Compile Include="Resources\Strings\Authentication\Common.Designer.cs" />
-    <Compile Include="Resources\Strings\Common\Common.Designer.cs" />
-    <Compile Include="Resources\Strings\Feedbacks\Common.Designer.cs" />
-    <Compile Include="Resources\Strings\Places\Common.Designer.cs" />
     <Compile Include="ViewModels\Login\ILoginViewModel.cs" />
     <Compile Include="ViewModels\Login\LoginViewModel.cs" />
     <Compile Include="ViewModels\Login\Commands\BaseLoginCommand.cs" />
@@ -67,6 +63,7 @@
     <Compile Include="ViewModels\Feedbacks\Commands\LoadFeedbacksCommand.cs" />
     <Compile Include="ViewModels\Feedbacks\Feedback\Commands\SaveFeedbackCommand.cs" />
     <Compile Include="ViewModels\Feedbacks\Feedback\Commands\SpeechToTextCommand.cs" />
+    <Compile Include="Messages\BeaconFoundMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extentions\" />
@@ -162,10 +159,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Resources\Strings\Authentication\Common.resx" />
-    <None Include="Resources\Strings\Common\Common.resx" />
-    <None Include="Resources\Strings\Feedbacks\Common.resx" />
-    <None Include="Resources\Strings\Places\Common.resx" />
     <None Include="FodyWeavers.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

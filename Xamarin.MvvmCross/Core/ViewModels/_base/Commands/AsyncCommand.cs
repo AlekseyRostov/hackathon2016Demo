@@ -36,7 +36,7 @@ namespace Feedback.Core.ViewModels.Commands
         public async void Execute(object parameter)
         {
             if (CanExecute(parameter))
-                await ExecuteAsync(parameter);
+                await ExecuteAsync(parameter).ConfigureAwait(true);
         }
 
         public abstract Task ExecuteAsync(object parameter);

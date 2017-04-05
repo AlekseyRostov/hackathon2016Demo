@@ -4,7 +4,6 @@ using System.Net;
 using System.Threading.Tasks;
 using Feedback.Core.Services;
 using Microsoft.WindowsAzure.MobileServices;
-using Strings = Feedback.Core.Resources.Strings.Common.Common;
 using MvvmCross.Platform;
 
 namespace Feedback.Core.ViewModels.Commands
@@ -56,11 +55,12 @@ namespace Feedback.Core.ViewModels.Commands
 
             if(ex is WebException)
             {
-                ViewModel.SaveFailureMessage = Strings.SaveDataNetworkFailure;
+                ViewModel.SaveFailureMessage = "Failed to save data at this time due to network issue. Please check your internet connection and try again.";
                 return true;
             }
 
-            ViewModel.SaveFailureMessage = Strings.SaveDataUnknownFailure;
+            ViewModel.SaveFailureMessage = "Failed to load data at this time. Please try again later.";
+
             return true;
         }
     }
