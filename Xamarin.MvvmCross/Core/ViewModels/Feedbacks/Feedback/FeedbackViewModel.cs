@@ -44,6 +44,8 @@ namespace Feedback.Core.ViewModels.Feedbacks.Feedback
                 {
                     RecordingPath = AudioRecorder.StopRecording();
                     IsRecording = false;
+
+                    RaisePropertyChanged(() => IsRecording);
                 }));
             }
         }
@@ -90,13 +92,22 @@ namespace Feedback.Core.ViewModels.Feedbacks.Feedback
 
         #region Services
 
-        internal IAudioRecorderService AudioRecorder { get { return Mvx.Resolve<IAudioRecorderService>(); } }
+        private IAudioRecorderService _audioRecorder;
+        internal IAudioRecorderService AudioRecorder
+        {
+            get
+            {
+                return _audioRecorder ?? (_audioRecorder = Mvx.Resolve<IAudioRecorderService>()); 
+            }
+        }
 
         #endregion
 
         public FeedbackViewModel()
         {
             PropertyChanged += OnViewModelPropertyChanged;
+
+            ShouldAlwaysRaiseInpcOnUserInterfaceThread(true);
         }
 
         private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -108,7 +119,10 @@ namespace Feedback.Core.ViewModels.Feedbacks.Feedback
             else if (e.PropertyName == nameof(SaveSucceeded) || e.PropertyName == nameof(SaveFailureMessage))
             {
                 if (SaveSucceeded)
-                    Close(this);
+                {
+                    Mvx.Resolve<IMvxMessenger>().Publish(new FeedbackSavedMessage(this));
+                    Close(this); 
+                }
                 else if (!string.IsNullOrEmpty(SaveFailureMessage))
                 {
                     
@@ -118,7 +132,8 @@ namespace Feedback.Core.ViewModels.Feedbacks.Feedback
 
         private void OnBeaconFound(BeaconFoundMessage msg)
         {
-
+            PlaceId = msg.Id;
+            PlaceName = msg.Name;
         }
 
         public void Init(string id, string name)

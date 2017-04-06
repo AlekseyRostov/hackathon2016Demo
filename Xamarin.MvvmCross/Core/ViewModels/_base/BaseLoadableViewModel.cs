@@ -1,8 +1,10 @@
 ﻿using Feedback.Core.ViewModels.Commands;
 using MvvmCross.Core.ViewModels;
+using PropertyChanged;
 
 namespace Feedback.Core.ViewModels
 {
+    [ImplementPropertyChanged]
     internal abstract class BaseLoadableViewModel : MvxViewModel, ILoadableViewModel
     {
         public abstract IAsyncCommand LoadCommand { get; }

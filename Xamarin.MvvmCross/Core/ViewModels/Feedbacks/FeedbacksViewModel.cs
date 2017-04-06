@@ -1,14 +1,23 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Feedback.Core.Messages;
 using Feedback.Core.ViewModels.Commands;
 using Feedback.Core.ViewModels.Feedbacks.Commands;
 using Feedback.Core.ViewModels.Feedbacks.Feedback;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Platform;
+using MvvmCross.Plugins.Messenger;
 
 namespace Feedback.Core.ViewModels.Feedbacks
 {
     internal class FeedbacksViewModel : BaseLoadableViewModel, IFeedbacksViewModel
     {
+        #region Fields
+
+        private MvxSubscriptionToken _feedbackSavedToken;
+
+        #endregion
+
         #region Commands
 
         private IAsyncCommand _loadCommand;
@@ -43,6 +52,13 @@ namespace Feedback.Core.ViewModels.Feedbacks
 
         private void OnCommandExecute()
         {
+            var mvxMessenger = Mvx.Resolve<IMvxMessenger>();
+
+            if (_feedbackSavedToken != null)
+                mvxMessenger.Unsubscribe<FeedbackSavedMessage>(_feedbackSavedToken);
+
+            _feedbackSavedToken = mvxMessenger.Subscribe<FeedbackSavedMessage>(msg => Start());
+
             ShowViewModel<FeedbackViewModel>(new { id = PlaceId, name = PlaceName });
         }
 

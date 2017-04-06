@@ -64,6 +64,7 @@
     <Compile Include="ViewModels\Feedbacks\Feedback\Commands\SaveFeedbackCommand.cs" />
     <Compile Include="ViewModels\Feedbacks\Feedback\Commands\SpeechToTextCommand.cs" />
     <Compile Include="Messages\BeaconFoundMessage.cs" />
+    <Compile Include="Messages\FeedbackSavedMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extentions\" />

@@ -11,6 +11,7 @@ using Feedback.API.Entities;
 using MvvmCross.Platform.Plugins;
 using MvvmCross.Plugins.Messenger;
 using Feedback.Core.Messages;
+using Feedback.Core.ViewModels.Feedbacks.Feedback;
 
 namespace Feedback.Core
 {
@@ -20,7 +21,7 @@ namespace Feedback.Core
 
         private MvxSubscriptionToken _userChangedToken;
 
-        private bool _placesWasShown;
+        private bool _feedbackWasShown;
 
         #endregion
 
@@ -63,8 +64,6 @@ namespace Feedback.Core
             {
                 Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<PlacesViewModel>());
 
-                _placesWasShown = true;
-
                 SetupBeacons(true);
             }
             else
@@ -85,8 +84,8 @@ namespace Feedback.Core
                     new BeaconModel
                     {
                         UUID = "6BF6DBA4-6D12-4C42-AE68-5344159683E3",
-                        Minor = 1,
-                        Major = 8
+                        Major = 1,
+                        Minor = 8
                     }
                 });
             }
@@ -103,10 +102,10 @@ namespace Feedback.Core
             {
                 var place = await PlaceService.GetPlaceByBeaconAsync(beaconModel);
 
-                if (!_placesWasShown)
+                if (!_feedbackWasShown)
                 {
-                    _placesWasShown = true;
-                    ShowViewModel<PlacesViewModel>(new { id = place.Id, name = place.Name }); 
+                    _feedbackWasShown = true;
+                    ShowViewModel<FeedbackViewModel>(new { id = place.Id, name = place.Name }); 
                 }
                 else
                     Mvx.Resolve<IMvxMessenger>().Publish(new BeaconFoundMessage(this, place.Id, place.Name));

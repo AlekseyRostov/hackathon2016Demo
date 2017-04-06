@@ -11,7 +11,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MinimumOSVersion</key>
-	<string>10.0</string>
+	<string>9.0</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -92,6 +92,10 @@
 		<string>remote-notification</string>
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We use your location to track nearby places.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string></string>
+	<key>NSLocationUsageDescription</key>
 	<string>We use your location to track nearby places.</string>
 </dict>
 </plist>

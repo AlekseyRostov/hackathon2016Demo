@@ -19,20 +19,27 @@ namespace Feedback.iOS.Services
 
         protected override void StartMonitoringInternal(IList<BeaconModel> beaconList)
         {
+            _locationManager.RequestAlwaysAuthorization();
+
             _locationManager.DidRangeBeacons += LocationManager_DidRangeBeacons;
+            _locationManager.DidDetermineState += LocationManager_DidDetermineState;;
+
             _locationManager.PausesLocationUpdatesAutomatically = false;
+
             _locationManager.StartUpdatingLocation();
+
             _locationManager.RequestAlwaysAuthorization();
 
             foreach(var beacon in beaconList)
             {
-                var clBeaconRegion = new CLBeaconRegion(new NSUuid(beacon.UUID), beacon.Major, beacon.Minor, beacon.ID)
-                                     {
-                                         NotifyEntryStateOnDisplay = true,
-                                         NotifyOnEntry = true,
-                                         NotifyOnExit = true
-                                     };
+                var clBeaconRegion = new CLBeaconRegion(new NSUuid(beacon.UUID), beacon.Major, beacon.Minor, "custom_region_id");
+
+                clBeaconRegion.NotifyEntryStateOnDisplay = true;
+                clBeaconRegion.NotifyOnEntry = true;
+                clBeaconRegion.NotifyOnExit = true;
+
                 _beaconRegions.Add(clBeaconRegion);
+
                 _locationManager.StartMonitoring(clBeaconRegion);
                 _locationManager.StartRangingBeacons(clBeaconRegion);
 
@@ -49,6 +56,11 @@ namespace Feedback.iOS.Services
                 _locationManager.StopMonitoring(region);
                 _locationManager.StopRangingBeacons(region);
             }
+        }
+
+        private void LocationManager_DidDetermineState(object sender, CLRegionStateDeterminedEventArgs e)
+        {
+
         }
 
         private void LocationManager_DidRangeBeacons(object sender, CLRegionBeaconsRangedEventArgs e)

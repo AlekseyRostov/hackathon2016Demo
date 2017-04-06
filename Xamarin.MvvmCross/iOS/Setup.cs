@@ -37,10 +37,10 @@ namespace Feedback.iOS
             base.InitializeFirstChance();
 
             Mvx.RegisterSingleton<IAuthenticationService>(() => new AuthenticationService());
+            Mvx.RegisterSingleton<IBeaconLocationService>(() => new BeaconLocationService());
 
             Mvx.RegisterType<IAudioRecorderService, AudioRecorderService>();
             Mvx.RegisterType<IDeviceService, DeviceService>();
-            Mvx.RegisterType<IBeaconLocationService, BeaconLocationService>();
         }
     }
 }
