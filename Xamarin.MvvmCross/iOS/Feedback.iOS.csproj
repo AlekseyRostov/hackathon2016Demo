@@ -75,7 +75,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
-    <CodesignProvision>fd35a0b1-fc49-4522-b70c-4fe0fb988d09</CodesignProvision>
+    <CodesignProvision>DevDaysFeedback iOS Development</CodesignProvision>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
