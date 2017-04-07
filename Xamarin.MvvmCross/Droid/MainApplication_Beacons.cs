@@ -37,8 +37,11 @@ namespace Feedback.Droid
 
         public void StopMonitoring()
         {
-            _beaconManager.StopRangingBeaconsInRegion(_rangingRegion);
-            _beaconManager.Unbind(this);
+            if (_beaconManager != null)
+            {
+                _beaconManager.StopRangingBeaconsInRegion(_rangingRegion);
+                _beaconManager.Unbind(this);
+            }
         }
 
         private void RangingBeaconsInRegion(object sender, ICollection<Beacon> beacons)

@@ -1,8 +1,8 @@
-﻿using System;
-using MvvmCross.Droid.Support.V4;
+﻿using Android.App;
 using Feedback.Core.ViewModels.Feedbacks.Feedback;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.AppCompat;
-using Android.App;
+
 namespace Feedback.Droid.Views.Feedbacks.Feedback
 {
     [Activity]
@@ -13,6 +13,10 @@ namespace Feedback.Droid.Views.Feedbacks.Feedback
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.FeedbackView);
+
+            var set = this.CreateBindingSet<FeedbackActivity, IFeedbackViewModel>();
+            set.Bind().For(Title).To(vm => vm.PlaceName);
+            set.Apply();
         }
     }
 }

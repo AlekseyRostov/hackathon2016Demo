@@ -2,6 +2,9 @@ using Android.Content;
 using MvvmCross.Droid.Platform;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Platform.Platform;
+using MvvmCross.Platform;
+using Feedback.Core.Services;
+using Feedback.Droid.Services;
 
 namespace Feedback.Droid
 {
@@ -19,6 +22,17 @@ namespace Feedback.Droid
         protected override IMvxTrace CreateDebugTrace()
         {
             return new FeedbackDebugTrace();
+        }
+
+        protected override void InitializeFirstChance()
+        {
+            base.InitializeFirstChance();
+
+            Mvx.RegisterSingleton<IAuthenticationService>(() => new AuthenticationService());
+            Mvx.RegisterSingleton<IBeaconLocationService>(() => new BeaconLocationService());
+
+            Mvx.RegisterType<IAudioRecorderService, AudioRecorderService>();
+            Mvx.RegisterType<IDeviceService, DeviceService>();
         }
     }
 }

@@ -4,10 +4,7 @@ using MvvmCross.Droid.Support.V7.AppCompat;
 
 namespace Feedback.Droid.Views.Login
 {
-    [Activity(Label = "@string/app_name"
-            , Icon = "@drawable/icon"
-            , Theme = "@style/MainTheme"
-            , NoHistory = true)]
+    [Activity]
     public class LoginActivity : MvxAppCompatActivity<ILoginViewModel>
     {
         protected override void OnCreate(Android.OS.Bundle bundle)

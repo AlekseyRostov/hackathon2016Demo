@@ -1,6 +1,5 @@
 using Android.App;
 using Android.Content.PM;
-using MvvmCross.Droid.Support.V7.AppCompat;
 
 namespace Feedback.Droid
 {
@@ -10,7 +9,7 @@ namespace Feedback.Droid
             , MainLauncher = true
             , NoHistory = true
             , ScreenOrientation = ScreenOrientation.Portrait)]
-    public class SplashScreen : MvxSplashScreenAppCompatActivity
+    public class SplashScreen : MvvmCross.Droid.Support.V7.AppCompat.MvxSplashScreenAppCompatActivity
     {
         public SplashScreen()
             : base(Resource.Layout.SplashScreen)

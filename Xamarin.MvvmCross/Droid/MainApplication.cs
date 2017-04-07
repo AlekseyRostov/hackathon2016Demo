@@ -1,12 +1,20 @@
 ﻿using System;
 using Android.App;
 using Feedback.Droid.Services;
+using Android.Runtime;
 
 namespace Feedback.Droid
 {
+    [Application]
     public partial class MainApplication : Application
     {
         public static MainApplication Instance { get; private set; }
+
+        public MainApplication(IntPtr handle, JniHandleOwnership transfer)
+            : base (handle, transfer)
+        {
+
+        }
 
         public override void OnCreate()
         {

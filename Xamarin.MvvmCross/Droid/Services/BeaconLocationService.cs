@@ -4,6 +4,9 @@ using AltBeaconOrg.BoundBeacon;
 using Feedback.API.Entities;
 using Feedback.Core.Services.Implementations;
 using Android.OS;
+using Android.App;
+using MvvmCross.Platform;
+using MvvmCross.Platform.Droid.Platform;
 
 namespace Feedback.Droid.Services
 {
@@ -26,8 +29,8 @@ namespace Feedback.Droid.Services
             new Android.OS.Handler(Looper.MainLooper).Post(() =>
             {
                 HandleFoundBeacon(
-                    beacon.Id1.ToString(), 
-                    (ushort)Convert.ToInt32(beacon.Id2.ToString()), 
+                    beacon.Id1.ToString(),
+                    (ushort)Convert.ToInt32(beacon.Id2.ToString()),
                     (ushort)Convert.ToInt32(beacon.Id3.ToString())
                 );
             });

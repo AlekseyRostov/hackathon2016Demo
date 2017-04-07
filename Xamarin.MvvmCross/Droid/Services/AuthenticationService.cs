@@ -2,6 +2,9 @@
 using Android.Webkit;
 using Feedback.Core.Services.Implementation;
 using Microsoft.WindowsAzure.MobileServices;
+using Android.App;
+using MvvmCross.Platform;
+using MvvmCross.Platform.Droid.Platform;
 
 namespace Feedback.Droid.Services
 {
@@ -9,7 +12,7 @@ namespace Feedback.Droid.Services
     {
         protected override Task<MobileServiceUser> GetFacebookUserAsync()
         {
-            return MobileService.LoginAsync(MainApplication.Instance, MobileServiceAuthenticationProvider.Facebook);
+            return MobileService.LoginAsync(Mvx.Resolve<IMvxAndroidCurrentTopActivity>().Activity, MobileServiceAuthenticationProvider.Facebook);
         }
 
         protected override void LogoutNative()

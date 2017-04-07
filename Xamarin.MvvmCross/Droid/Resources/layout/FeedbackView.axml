@@ -1,3 +1,76 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
-</LinearLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="Visibility InvertedVisibility(IsSaving)">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Write your feedback below"
+            android:textColor="#000000" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:gravity="top|left"
+            android:singleLine="false"
+            android:hint="Write here"
+            local:MvxBind="Text Text" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            local:MvxBind="Visibility InvertedVisibility(IsRecognizingSpeech)">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Start recording"
+                android:textColor="#FFFFFF"
+                android:background="@color/holo_green_dark"
+                local:MvxBind="Click StartRecordingCommand; Visibility InvertedVisibility(IsRecording)" />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Stop recording"
+                android:textColor="#FFFFFF"
+                android:background="@color/holo_red_dark"
+                android:visibility="gone"
+                local:MvxBind="Click StopRecordingCommand; Visibility Visibility(IsRecording)" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:text="Processing"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            local:MvxBind="Visibility Visibility(IsRecognizingSpeech)" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            local:MvxBind="Text SpeechRecognitionError; Visibility Visibility(SpeechRecognitionError)" />
+    </LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:progressDrawable="@drawable/progress_style"
+        android:indeterminateOnly="true"
+        local:MvxBind="Visibility Visibility(IsSaving)" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_check"
+        local:MvxBind="Click SaveCommand"
+        local:borderWidth="0dp" />
+</RelativeLayout>

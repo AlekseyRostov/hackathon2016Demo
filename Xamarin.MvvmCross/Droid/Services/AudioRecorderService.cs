@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Android.App;
 using Android.Media;
 using Feedback.Core.Services;
 using Java.IO;
+using MvvmCross.Platform;
+using MvvmCross.Platform.Droid.Platform;
 
 // Ported from: http://www.edumobile.org/android/audio-recording-in-wav-format-in-android-programming/
 

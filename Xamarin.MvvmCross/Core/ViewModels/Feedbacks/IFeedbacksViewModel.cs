@@ -7,9 +7,9 @@ namespace Feedback.Core.ViewModels.Feedbacks
     {
         ICommand AddCommand { get; }
 
-        string PlaceId { get; set; }
+        string PlaceId { get; }
 
-        string PlaceName { get; set; }
+        string PlaceName { get; }
 
         ObservableCollection<API.Entities.Feedback> Feedbacks { get; set; }
     }

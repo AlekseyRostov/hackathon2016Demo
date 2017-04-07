@@ -102,17 +102,20 @@ namespace Feedback.Core
             {
                 var place = await PlaceService.GetPlaceByBeaconAsync(beaconModel);
 
-                if (!_feedbackWasShown)
+                if (place != null)
                 {
-                    _feedbackWasShown = true;
-                    ShowViewModel<FeedbackViewModel>(new { id = place.Id, name = place.Name }); 
+                    if (!_feedbackWasShown)
+                    {
+                        _feedbackWasShown = true;
+                        ShowViewModel<FeedbackViewModel>(new { id = place.Id, name = place.Name });
+                    }
+                    else
+                        Mvx.Resolve<IMvxMessenger>().Publish(new BeaconFoundMessage(this, place.Id, place.Name));
                 }
-                else
-                    Mvx.Resolve<IMvxMessenger>().Publish(new BeaconFoundMessage(this, place.Id, place.Name));
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex);
+                System.Diagnostics.Debug.WriteLine($"{ex}\n{beaconModel.ToString()}");
             }
         }
 
